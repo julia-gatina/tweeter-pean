@@ -1,0 +1,25 @@
+@import "src/styles/colors";
+
+:host {
+  .profile {
+    margin-top: 110px;
+    height: 400px;
+    background-color: $hit-grey-grey;
+    background-image: url("/assets/brick-wall.png");
+    color: $masala-brown;
+
+    div img {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.05);
+        background-color: $light-grey-grey;
+        border-radius: 80%;
+      }
+    }
+  }
+}

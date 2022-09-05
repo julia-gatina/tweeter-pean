@@ -1,0 +1,47 @@
+@import "src/styles/colors";
+
+:host {
+  .navbar {
+    background-color: $yellow-green-green;
+    height: 120px;
+    box-shadow: 2px 2px 10px $green-green;
+    text-shadow: 2px 2px 3px $green-green;
+    z-index: 100;
+
+    #logo {
+      font-family: "Bungee", "Sans-Serif", cursive;
+      color: white;
+      font-size: 33px;
+
+      &:hover {
+        color: $yellow-yellow;
+        transform: scale(1.05);
+      }
+    }
+
+    #write-tweet {
+      font-size: 24px;
+      color: $white-white;
+      text-decoration: none;
+
+      &:hover {
+        color: $yellow-yellow;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  #write-tweet i {
+    animation: MoveUpDown 1s linear infinite;
+    position: relative;
+  }
+
+  @keyframes MoveUpDown {
+    0%, 100% {
+      bottom: 0;
+    }
+    50% {
+      bottom: 10px;
+    }
+  }
+}
