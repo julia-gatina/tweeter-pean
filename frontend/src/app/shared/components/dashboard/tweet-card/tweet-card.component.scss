@@ -1,0 +1,21 @@
+@import "src/styles/colors";
+
+:host {
+  .card {
+    background-color: $desert-storm-grey;
+    border-color: $sceptic-green;
+
+    &:hover {
+      box-shadow: 2px 2px 8px $yellow-green-green;
+      transform: scale(101%);
+    }
+  }
+
+  div i.fas:hover {
+    color: $yellow-green-green;
+  }
+
+  .divider {
+    background-color: $hit-grey-grey;
+  }
+}
