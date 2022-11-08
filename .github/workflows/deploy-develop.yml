@@ -28,10 +28,10 @@ jobs:
 
 
       # Build &  Deploy frontend
-      - run: cd frontend && npm install && npm run build:dev
+      #- run: cd frontend && npm install && npm run build:dev
       # EC2 static IP: "54.205.217.251", user: "ubuntu",
       # Nginx frontend location uses path: "/opt/frontend/dist/tweeter-ui"
-      - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/frontend/dist/tweeter-ui
+      #- run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/frontend/dist/tweeter-ui
 
 
 
@@ -53,6 +53,10 @@ jobs:
             cd /opt/backend
             ls -al
             pm2 status
+            pm2 stop 0
+            pm2 start 0pm
+            sudo pm2 save
+            sudo systemctl restart nginx
 
 
 
