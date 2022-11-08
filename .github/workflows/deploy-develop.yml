@@ -36,4 +36,4 @@ jobs:
       # build backend
       - run: cd backend && npm install
       # restart server
-      - run: cd backend && pm2 restart server.js
+      - run: cd backend && sudo pm2 restart server.js
