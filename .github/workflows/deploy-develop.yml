@@ -1,4 +1,4 @@
-name: Deploy develop
+name: Deploy develop on AWS EC2 instance
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 
 jobs:
   deploy:
+    # Spin up Ubuntu with NodeJS 16
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,15 +17,15 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      # Setup key
+
+      # Setup SSH key as Env. variable
       - run: set -eu
       - run: mkdir "$HOME/.ssh"
       - run: echo "${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
       - run: chmod 600 "$HOME/.ssh/key"
-      # Build frontend
+
+      # Build &  Deploy frontend
       - run: cd frontend && npm install && npm run build:dev
-      # Deploy frontend
-      #- run: cd frontend/dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . ubuntu@54.205.217.251:/opt/test-aaa
-      - run: cd frontend/dist/tweeter-ui && ls
-      #- run: cd frontend/dist/tweeter-ui && scp -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" -r . ubuntu@54.205.217.251:/opt/test-aaa
+      # EC2 static IP: "54.205.217.251", user: "ubuntu",
+      # Nginx frontend location uses path: "/opt/frontend/dist/tweeter-ui"
       - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/frontend/dist/tweeter-ui
