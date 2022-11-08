@@ -6,7 +6,7 @@ on:
       - develop
 env:
   aws-server:
-    host: 54.205.217.251
+    host: "54.205.217.251"
     user: ubuntu
 
 jobs:
