@@ -54,7 +54,7 @@ jobs:
             ls -al
             pm2 status
             pm2 stop 0
-            pm2 start 0pm
+            pm2 start 0
             sudo pm2 save
             sudo systemctl restart nginx
 
