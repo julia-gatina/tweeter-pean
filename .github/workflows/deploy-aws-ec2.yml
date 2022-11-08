@@ -24,4 +24,5 @@ jobs:
       # Build frontend
       - run: cd frontend && npm install && npm run build:dev
       # Deploy frontend
-      - run: cd frontend/dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . ubuntu@54.205.217.251:/opt/test-aaa
+      #- run: cd frontend/dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . ubuntu@54.205.217.251:/opt/test-aaa
+      - run: cd frontend/dist && ls
