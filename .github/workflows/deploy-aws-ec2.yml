@@ -23,5 +23,5 @@ jobs:
       - run: chmod 600 "$HOME/.ssh/key"
       # Build frontend
       - run: cd frontend && npm install && npm run build:dev
-      # Deploy
-      #- run: cd dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . ubuntu@54.205.217.251:/opt/test-aaa
+      # Deploy frontend
+      - run: cd frontend/dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . ubuntu@54.205.217.251:/opt/test-aaa
