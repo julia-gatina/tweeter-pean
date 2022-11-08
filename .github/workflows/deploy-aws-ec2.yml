@@ -18,12 +18,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       # Setup key
       - run: set -eu
-      - run: echo "1231231"
-      - run: echo "Test Renat"
-      #- run: chmod 600 "$HOME/.ssh/key"
-
+      - run: mkdir "$HOME/.ssh"
+      - run: echo "${{ secrets.RENAT_TA_MBP_PRIVATE_KEY }}" > "$HOME/.ssh/key"
+      - run: chmod 600 "$HOME/.ssh/key"
       # Build frontend
-      - run cd frontend
+      - run: cd frontend
       - run: npm ci
       - run: npm run build:dev
       # Deploy
