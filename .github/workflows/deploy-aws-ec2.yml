@@ -19,7 +19,7 @@ jobs:
       # Setup key
       - run: set -eu
       - run: mkdir "$HOME/.ssh"
-      - run: echo "${{ secrets.RENAT_TA_MBP_PRIVATE_KEY }}" > "$HOME/.ssh/key"
+      - run: echo ${{ secrets.RENAT_TA_MBP_PRIVATE_KEY }} > $HOME/.ssh/key
       - run: chmod 600 "$HOME/.ssh/key"
         -
       # Build frontend
