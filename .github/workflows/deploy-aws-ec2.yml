@@ -23,7 +23,7 @@ jobs:
       - run: chmod 600 "$HOME/.ssh/key"
       # Build frontend
       - run: ls
-      - run: cd frontend && npm ci
+      - run: cd frontend && npm install
       - run: ls
       #- run: npm run build:dev
       # Deploy
