@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [ 16.x ]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -24,31 +24,23 @@ jobs:
       - run: echo "${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
       - run: chmod 600 "$HOME/.ssh/key"
 
-
-
-
       # Build &  Deploy frontend
-      #- run: cd frontend && npm install && npm run build:dev
+      - run: cd frontend && npm install && npm run build:dev
       # EC2 static IP: "54.205.217.251", user: "ubuntu",
       # Nginx frontend location uses path: "/opt/frontend/dist/tweeter-ui"
-      #- run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/frontend/dist/tweeter-ui
-
-
-
-
+      - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/frontend/dist/tweeter-ui
 
       # Build &  Deploy backend
       # build backend
       - run: cd backend && npm install
       # copy backend raw sources to EC2 (better to enhance and copy ready artifacts)
       - run: cd backend && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/backend
-      # SSH to AWS and run command
+      # SSH to AWS and run command to restart pm2 and nginx
       - uses: appleboy/ssh-action@master
         with:
           host: 54.205.217.251
           username: ubuntu
           key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
-          port: 22
           script: |
             cd /opt/backend
             ls -al
@@ -57,14 +49,3 @@ jobs:
             pm2 start 0
             sudo pm2 save
             sudo systemctl restart nginx
-
-
-
-
-      # Build &  Deploy backend
-      # copy backend raw sources to EC2 (better to enhance and copy ready artifacts)
-      #- run: cd backend && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/backend
-      # build backend
-      #- run: cd backend && npm install
-      # restart server
-      #- run: cd backend && pm2 restart index.js
