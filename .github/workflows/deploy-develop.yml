@@ -43,17 +43,16 @@ jobs:
       # copy backend raw sources to EC2 (better to enhance and copy ready artifacts)
       - run: cd backend && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ubuntu@54.205.217.251:/opt/backend
       # SSH to AWS and run command
-      - name: SSH to AWS and restart backend
-          uses: appleboy/ssh-action@master
-          with:
-            host: 54.205.217.251
-            username: ubuntu
-            key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
-            port: 22
-            script: |
-              cd /opt/backend
-              ls -al
-              pm2 status
+      - uses: appleboy/ssh-action@master
+        with:
+          host: 54.205.217.251
+          username: ubuntu
+          key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /opt/backend
+            ls -al
+            pm2 status
 
 
 
