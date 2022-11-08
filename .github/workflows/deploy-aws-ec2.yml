@@ -21,7 +21,7 @@ jobs:
       - run: echo "1231231"
       - run: echo "Test Renat"
       #- run: chmod 600 "$HOME/.ssh/key"
-        -
+
       # Build frontend
       - run cd frontend
       - run: npm ci
