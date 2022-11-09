@@ -9,7 +9,7 @@ module.exports = function (DataHelpers) {
   tweetsRoutes.get("/test", function (req, res) {
     return res
       .status(200)
-      .send("Hello world, from backend! Test: nginx is restarted!");
+      .send("Hello world, from backend! Test: nginx is restarted 2!");
   });
 
   tweetsRoutes.get("/", function (req, res) {
