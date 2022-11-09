@@ -5,8 +5,9 @@ on:
     branches:
       - develop
 env:
-  server-host: 54.205.217.251
+  server-host: tweeter-dev.binaryforce.ca
   server-user: ubuntu
+  server-key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
 
 jobs:
   deploy:
@@ -24,7 +25,7 @@ jobs:
       # 1) Setup SSH key as Env. variable
       - run: set -eu
       - run: mkdir "$HOME/.ssh"
-      - run: echo "${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
+      - run: echo "${{ env.server-key }}" > "$HOME/.ssh/key"
       - run: chmod 600 "$HOME/.ssh/key"
 
       # 2) Build & Deploy frontend
@@ -42,7 +43,7 @@ jobs:
         with:
           host: ${{ env.server-host }}
           username: ${{ env.server-user }}
-          key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
+          key: ${{ env.server-key }}
           script: |
             cd /opt/backend
             ls -al
@@ -58,6 +59,6 @@ jobs:
         with:
           host: ${{ env.server-host }}
           username: ${{ env.server-user }}
-          key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
+          key: ${{ env.server-key }}
           script: |
             sudo systemctl restart nginx
