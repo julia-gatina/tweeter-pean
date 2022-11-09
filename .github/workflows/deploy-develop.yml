@@ -50,9 +50,8 @@ jobs:
             pm2 stop 0
             pm2 start 0
             sudo pm2 save
-            sudo systemctl restart nginx
 
-      # 3) Re-Deploy nginx
+      # 3) Re-Deploy nginx configuration
       - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress ./nginx.conf ${{ env.server-user }}@${{ env.server-host }}:/etc/nginx/conf.d
       # SSH to AWS and restart nginx
       - uses: appleboy/ssh-action@master
