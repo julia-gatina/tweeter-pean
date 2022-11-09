@@ -14,31 +14,30 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 16.x ]
+        node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      # Setup SSH key as Env. variable
+      # 1) Setup SSH key as Env. variable
       - run: set -eu
       - run: mkdir "$HOME/.ssh"
       - run: echo "${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}" > "$HOME/.ssh/key"
       - run: chmod 600 "$HOME/.ssh/key"
 
-      # Build &  Deploy frontend
+      # 2) Build & Deploy frontend
       - run: cd frontend && npm install && npm run build:dev
       # EC2 static IP: "54.205.217.251", user: "ubuntu",
       # Nginx frontend location uses path: "/opt/frontend/dist/tweeter-ui"
       - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/frontend/dist/tweeter-ui
 
-      # Build &  Deploy backend
-      # build backend
+      # 3) Build & Deploy backend
       - run: cd backend && npm install
       # copy backend raw sources to EC2 (better to enhance and copy ready artifacts)
       - run: cd backend && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/backend
-      # SSH to AWS and run command to restart pm2 and nginx
+      # SSH to AWS and run command to restart pm2
       - uses: appleboy/ssh-action@master
         with:
           host: ${{ env.server-host }}
@@ -51,4 +50,14 @@ jobs:
             pm2 stop 0
             pm2 start 0
             sudo pm2 save
+
+      # 3) Re-Deploy nginx configuration
+      - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress ./nginx.conf ${{ env.server-user }}@${{ env.server-host }}:/etc/nginx/conf.d
+      # SSH to AWS and restart nginx
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.server-host }}
+          username: ${{ env.server-user }}
+          key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
+          script: |
             sudo systemctl restart nginx
