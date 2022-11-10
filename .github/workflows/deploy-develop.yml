@@ -46,10 +46,10 @@ jobs:
           script: |
             cd /opt/backend
             ls -al
-            pm2 status ecosystem.config.js --only "api-develop"
+            pm2 status
             pm2 stop ecosystem.config.js --only "api-develop"
             pm2 start ecosystem.config.js --only "api-develop"
-            sudo pm2 save ecosystem.config.js --only "api-develop"
+            sudo pm2 save
 
       # 3) Re-Deploy nginx configuration
       - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress ./nginx.conf ${{ env.server-user }}@${{ env.server-host }}:/etc/nginx/conf.d

@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "api-develop",
-      script: "/path/to/my/process",
+      script: "./index.js",
       env: {
         NODE_ENV: "develop",
         PORT: 8080,
@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       name: "api-release",
-      script: "/path/to/my/process",
+      script: "./index.js",
       env: {
         NODE_ENV: "release",
         PORT: 8081,
@@ -18,7 +18,7 @@ module.exports = {
     },
     {
       name: "api-prod",
-      script: "/path/to/my/process",
+      script: "./index.js",
       env: {
         NODE_ENV: "prod",
         PORT: 8082,

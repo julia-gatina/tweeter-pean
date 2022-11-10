@@ -9,7 +9,7 @@ module.exports = function (DataHelpers) {
   tweetsRoutes.get("/test", function (req, res) {
     return res
       .status(200)
-      .send("Hello world, from backend! Test: PM2 with config.");
+      .send("Hello world, from backend! Test: PM2 with config Develop 8080.");
   });
 
   tweetsRoutes.get("/", function (req, res) {
