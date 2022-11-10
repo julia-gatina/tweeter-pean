@@ -30,7 +30,6 @@ jobs:
 
       # 2) Build & Deploy frontend
       - run: cd frontend && npm install && npm run build:dev
-      # EC2 static IP: "54.205.217.251", user: "ubuntu",
       # Nginx frontend location uses path: "/opt/frontend/dist/tweeter-ui"
       - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/frontend/dist/tweeter-ui
 
@@ -47,10 +46,10 @@ jobs:
           script: |
             cd /opt/backend
             ls -al
-            pm2 status
-            pm2 stop 0
-            pm2 start 0
-            sudo pm2 save
+            pm2 status ecosystem.config.js --only "api-develop"
+            pm2 stop ecosystem.config.js --only "api-develop"
+            pm2 start ecosystem.config.js --only "api-develop"
+            sudo pm2 save ecosystem.config.js --only "api-develop"
 
       # 3) Re-Deploy nginx configuration
       - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress ./nginx.conf ${{ env.server-user }}@${{ env.server-host }}:/etc/nginx/conf.d
