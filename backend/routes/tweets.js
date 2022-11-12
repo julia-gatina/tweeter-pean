@@ -7,7 +7,7 @@ const tweetsRoutes = express.Router();
 
 module.exports = function (DataHelpers) {
   tweetsRoutes.get("/test", function (req, res) {
-    return res.status(200).send("Hello world, from backend! Test Dev.");
+    return res.status(200).send("Hello world, from backend! Test Dev 1.");
   });
 
   tweetsRoutes.get("/", function (req, res) {
