@@ -1,0 +1,64 @@
+name: Deploy release on AWS EC2 instance
+
+on:
+  push:
+    branches:
+      - release
+env:
+  branch: ${{ github.ref_name }} # branch name that triggered the action
+  server-host: tweeter-qa.binaryforce.ca
+  server-user: ubuntu
+  server-key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
+
+jobs:
+  deploy:
+    # Spin up Ubuntu with NodeJS 16
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # 1) Setup SSH key as Env. variable
+      - run: set -eu
+      - run: mkdir "$HOME/.ssh"
+      - run: echo "${{ env.server-key }}" > "$HOME/.ssh/key"
+      - run: chmod 600 "$HOME/.ssh/key"
+
+      # 2) Build & Deploy frontend
+      - run: cd frontend && npm install && npm run build:dev
+      # Nginx frontend location expects path: "/opt/frontend/{branch-name}/dist/tweeter-ui"
+      - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/frontend/${{ env.branch }}/dist/tweeter-ui
+
+      # 3) Build & Deploy backend
+      - run: cd backend && npm install
+      # copy backend raw sources to EC2 (better to enhance and copy ready artifacts)
+      - run: cd backend && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/backend/${{ env.branch }}
+      # SSH to AWS and run command to restart pm2
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.server-host }}
+          username: ${{ env.server-user }}
+          key: ${{ env.server-key }}
+          script: |
+            cd /opt/backend/${{ env.branch }}
+            ls -al
+            pm2 status
+            pm2 stop ecosystem.config.js --only "api-release"
+            pm2 start ecosystem.config.js --only "api-release"
+            sudo pm2 save
+
+      # 3) Re-Deploy nginx configuration
+      - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress ./nginx.conf ${{ env.server-user }}@${{ env.server-host }}:/etc/nginx/conf.d
+      # SSH to AWS and restart nginx
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.server-host }}
+          username: ${{ env.server-user }}
+          key: ${{ env.server-key }}
+          script: |
+            sudo systemctl restart nginx
