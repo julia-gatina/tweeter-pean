@@ -1,7 +1,7 @@
 "use strict";
 
 // Basic express setup:
-const PORT = process.env.PORT;
+const PORT = process.env.PORT; // takes port from ecosystem.config.js based on env.
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();

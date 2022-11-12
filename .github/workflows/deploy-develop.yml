@@ -5,6 +5,7 @@ on:
     branches:
       - develop
 env:
+  branch: ${{ github.ref_name }} # branch name that triggered the action
   server-host: tweeter-dev.binaryforce.ca
   server-user: ubuntu
   server-key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
@@ -30,13 +31,13 @@ jobs:
 
       # 2) Build & Deploy frontend
       - run: cd frontend && npm install && npm run build:dev
-      # Nginx frontend location uses path: "/opt/frontend/dist/tweeter-ui"
-      - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/frontend/dist/tweeter-ui
+      # Nginx frontend location expects path: "/opt/frontend/{branch-name}/dist/tweeter-ui"
+      - run: cd frontend/dist/tweeter-ui && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/frontend/{{ env.branch }}/dist/tweeter-ui
 
       # 3) Build & Deploy backend
       - run: cd backend && npm install
       # copy backend raw sources to EC2 (better to enhance and copy ready artifacts)
-      - run: cd backend && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/backend
+      - run: cd backend && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress . ${{ env.server-user }}@${{ env.server-host }}:/opt/backend/{{ env.branch }}
       # SSH to AWS and run command to restart pm2
       - uses: appleboy/ssh-action@master
         with:
@@ -44,7 +45,7 @@ jobs:
           username: ${{ env.server-user }}
           key: ${{ env.server-key }}
           script: |
-            cd /opt/backend
+            cd /opt/backend/{{ env.branch }}
             ls -al
             pm2 status
             pm2 stop ecosystem.config.js --only "api-develop"
