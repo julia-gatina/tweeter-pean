@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'bf-tweet-card',
   templateUrl: './tweet-card.component.html',
-  styleUrls: ['./tweet-card.component.scss']
+  styleUrls: ['./tweet-card.component.scss'],
 })
-export class TweetCardComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class TweetCardComponent {
+  constructor() {}
 }
