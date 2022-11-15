@@ -4,7 +4,7 @@ git diff-files --quiet
 DIRTY_CODE=$?
 
 if [[ $DIRTY_CODE -ne 0 ]]; then
-  echo "YOU HAVE UNCOMMITTED CODE, PLEASE STASH CHANGES OR ADD FILES"
+  echo "YOU HAVE UNCOMMITTED CODE, PLEASE SHELVE CHANGES OR ADD FILES"
   exit 1;
 fi
 
