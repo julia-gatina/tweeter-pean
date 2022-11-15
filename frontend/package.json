@@ -10,7 +10,6 @@
     "test": "ng test",
     "test:ci": "ng test --watch=false --codeCoverage=true --browsers=ChromeHeadlessNoSandbox",
     "format:fix": "pretty-quick --staged",
-    "precommit": "run-s format:fix lint",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix --force"
   },
