@@ -9,11 +9,11 @@ if [[ $DIRTY_CODE -ne 0 ]]; then
 fi
 
 # npm run lint && npm run test
-npm run lint && npm run format:fix &&  npm run test:ci
+npm run lint &&  npm run test:ci
 CODE=$?
 
 if [[ $CODE -ne 0 ]]; then
-  echo "---MAKE SURE YOU ADDED ALL YOUR FILES BEFORE COMMITTING---"
+  echo "---MAKE SURE YOU ADDED ALL YOUR FILES BEFORE PUSH---"
 fi
 
 exit $CODE
