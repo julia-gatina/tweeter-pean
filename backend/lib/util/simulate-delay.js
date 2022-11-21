@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // This module exports a utility function for simulating
 // delay (for example, in network or file system operations)
@@ -13,5 +13,4 @@ function someMilliseconds() {
 
 module.exports = function simulateDelay(callback) {
   setTimeout(callback, someMilliseconds());
-}
-
+};
