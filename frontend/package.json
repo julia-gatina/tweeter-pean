@@ -9,6 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --watch=false --codeCoverage=true --browsers=ChromeHeadlessNoSandbox",
+    "format:fix": "pretty-quick --staged",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix --force"
   },
@@ -40,13 +41,21 @@
     "@typescript-eslint/eslint-plugin": "5.27.1",
     "@typescript-eslint/parser": "5.27.1",
     "eslint": "^8.17.0",
+    "husky": "^1.1.4",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3",
     "typescript": "~4.6.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "./prepush.sh"
+    }
   }
 }
