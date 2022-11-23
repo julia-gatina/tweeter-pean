@@ -9,7 +9,7 @@ on:
       - develop
 
 jobs:
-  deploy:
+  test:
     # Spin up Ubuntu with NodeJS 16
     runs-on: ubuntu-latest
     strategy:

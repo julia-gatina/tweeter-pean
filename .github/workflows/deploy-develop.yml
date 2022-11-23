@@ -11,6 +11,13 @@ env:
   server-key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
 
 jobs:
+  test:
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Test Action from test.yml
+        uses: ./.github/actions/test
+
   deploy:
     # Spin up Ubuntu with NodeJS 16
     runs-on: ubuntu-latest
