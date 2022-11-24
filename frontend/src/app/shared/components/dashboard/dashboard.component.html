@@ -3,7 +3,7 @@
   <div class="row my-5">
     <bf-profile class="col-12 col-md-6"></bf-profile>
     <div class="col-12 col-md-6">
-      <bf-tweet-input></bf-tweet-input>
+      <bf-tweet-input (submitTweet)="onSubmitTweet($event)"></bf-tweet-input>
       <bf-tweet-card></bf-tweet-card>
     </div>
   </div>
