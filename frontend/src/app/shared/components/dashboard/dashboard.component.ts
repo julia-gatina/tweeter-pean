@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   constructor() {}
+
+  public onSubmitTweet(tweetText: string): void {
+    console.log(tweetText);
+  }
 }
