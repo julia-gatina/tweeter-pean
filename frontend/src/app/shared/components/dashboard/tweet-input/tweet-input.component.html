@@ -1,14 +1,21 @@
-<div class="mb-3">
-  <input
-    id="new-tweet"
-    type="text"
-    class="form-control"
-    placeholder="What Are You Humming About"
-  />
-  <div class="row d-flex align-items-center justify-content-between mx-0">
-    <button type="button" class="button btn-lg btn-secondary my-3 rounded">
-      TWEET
-    </button>
-    <div id="counter">140</div>
+<div *ngIf="errorMsg" class="alert alert-danger" role="alert">{{ errorMsg }}</div>
+<textarea
+  type="text"
+  class="form-control new-tweet pb-0"
+  placeholder="What Are You Humming About"
+  (keyup)="onKeyUp()"
+  [(ngModel)]="newTweetText"
+></textarea>
+<div class="row d-flex align-items-center justify-content-between mx-0 mb-3">
+  <button
+    type="button"
+    class="btn btn-lg my-3 rounded text-center"
+    [disabled]="charsCounterToDisplay < 0"
+    (click)="onTweetBtnClick()"
+  >
+    TWEET
+  </button>
+  <div class="counter" [ngClass]="{ 'text-red': charsCounterToDisplay < 0 }">
+    {{ charsCounterToDisplay }}
   </div>
 </div>
