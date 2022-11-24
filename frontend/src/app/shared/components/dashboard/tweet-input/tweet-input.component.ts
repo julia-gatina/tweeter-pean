@@ -26,7 +26,7 @@ export class TweetInputComponent implements OnInit {
     if (this.charsCounterToDisplay < 0) {
       this.errorMsg = 'Your tweet is too long';
     } else {
-      this.errorMsg = '';
+      this.errorMsg = null;
     }
   }
 
@@ -35,10 +35,10 @@ export class TweetInputComponent implements OnInit {
 
     if (!inputValue) {
       this.errorMsg = 'Input can not be empty';
-      this.newTweetText = '';
+      this.newTweetText = null;
     } else {
-      this.errorMsg = '';
-      this.newTweetText = '';
+      this.errorMsg = null;
+      this.newTweetText = null;
       this.submitTweet.emit(inputValue);
     }
   }
