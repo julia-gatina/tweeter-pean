@@ -2,15 +2,18 @@
 
 :host {
   .new-tweet {
-    border: none;
     font-family: "Source Sans", sans-serif;
     font-size: 20px;
+    border: none;
     border-bottom: 5px solid $sceptic-green;
     outline: none;
     background-color: $desert-storm-grey;
   }
-
-  .button {
+  textarea:focus {
+    outline: none;
+    box-shadow: none!important;
+  }
+  button {
     font-family: "Bungee";
     font-size: 20px;
     color: $masala-brown;
@@ -24,11 +27,20 @@
       $conifer-green
     );
     border-color: white;
+    filter: sepia(40%);
+    transition: filter 0.3s ease-in-out;
+    &:hover {
+      filter:none;
+      transform: scale(1.03);
+    }
   }
 
   .counter {
     font-family: "Bungee";
     font-size: 20px;
     color: $masala-brown;
+  }
+  .text-red {
+    color:red;
   }
 }
