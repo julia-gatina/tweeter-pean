@@ -1,9 +1,28 @@
 'use strict';
 
-// Basic express setup:
-const PORT = process.env.PORT; // takes port from ecosystem.config.js based on env.
+/* imports */
+const Liquibase = require('node-liquibase').Liquibase;
 const express = require('express');
 const bodyParser = require('body-parser');
+const POSTGRESQL_DEFAULT_CONFIG = require('node-liquibase').POSTGRESQL_DEFAULT_CONFIG;
+
+/* Env variables from ecosystem.config.js */
+const SERVER_PORT = process.env.PORT;
+const DB_PORT = process.env.DB_PORT;
+const DB_NAME = process.env.DB_NAME;
+
+const myConfig = {
+  ...POSTGRESQL_DEFAULT_CONFIG,
+  changeLogFile: './db/changelog.xml',
+  url: `jdbc:postgresql://localhost:${DB_PORT}/${DB_NAME}`, // TODO null here
+  username: 'tweeter',
+  password: 'tweeter'
+};
+const instTs = new Liquibase(myConfig);
+instTs.status();
+instTs.update(null);
+
+// Basic express setup:
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +50,6 @@ const tweetsRoutes = require('./routes/tweets')(DataHelpers);
 // Mount the backend routes at the "/api" path prefix:
 app.use('/api', tweetsRoutes);
 
-app.listen(PORT, () => {
-  console.log('HI, Tweeter backend app listening on port ' + PORT);
+app.listen(SERVER_PORT, () => {
+  console.log('Tweeter backend listening on port ' + SERVER_PORT);
 });

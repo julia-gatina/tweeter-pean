@@ -1,0 +1,29 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet author="rgatin" id="initial-db-set">
+
+    <!-- test create table -->
+    <createTable tableName="test_table_liquibase">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="name" type="VARCHAR(255)"></column>
+    </createTable>
+
+    <!-- test insert with liquibase  -->
+    <insert tableName="test_table_liquibase">
+      <column name="id" value="8d60d5b8-b40f-4616-9ff9-7953af3e3b28" />
+      <column name="name" value="Renat Gatin" />
+    </insert>
+
+    <!-- test insert with SQL -->
+    <sql>
+      INSERT INTO test_table_liquibase (id, name)
+      VALUES ('43590c96-7725-4d39-952a-4f750e1ce745', 'Julia Gatina')
+    </sql>
+
+  </changeSet>
+
+</databaseChangeLog>
