@@ -9,6 +9,8 @@ env:
   server-host: tweeter-qa.binaryforce.ca
   server-user: ubuntu
   server-key: ${{ secrets.AWS_EC2_PEAN_SSH_PRIVATE_KEY }}
+  db-username: ${{ secrets.AWS_EC2_PEAN_DB_USERNAME_QA }}
+  db-password: ${{ secrets.AWS_EC2_PEAN_DB_PASSWORD_QA }}
 
 jobs:
   deploy:
@@ -48,8 +50,9 @@ jobs:
             cd /opt/backend/${{ env.branch }}
             ls -al
             pm2 status
-            pm2 stop ecosystem.config.js --only "api-release"
-            pm2 start ecosystem.config.js --only "api-release"
+            pm2 stop "api-release"
+            pm2 delete "api-release"
+            DB_USERNAME=${{ env.db-username }} DB_PASSWORD=${{ env.db-password }} pm2 start ecosystem.config.js --only "api-release"
             sudo pm2 save
 
       # 3) Re-Deploy nginx configuration
