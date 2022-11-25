@@ -49,10 +49,10 @@ jobs:
           script: |
             cd /opt/backend/${{ env.branch }}
             ls -al
-            pm2 status
-            pm2 stop "api-release"
-            pm2 delete "api-release"
-            DB_USERNAME=${{ env.db-username }} DB_PASSWORD=${{ env.db-password }} pm2 start ecosystem.config.js --only "api-release"
+            sudo pm2 status
+            sudo pm2 stop "api-release"
+            sudo pm2 delete "api-release"
+            sudo DB_USERNAME=${{ env.db-username }} DB_PASSWORD=${{ env.db-password }} pm2 start ecosystem.config.js --only "api-release"
             sudo pm2 save
 
       # 3) Re-Deploy nginx configuration
