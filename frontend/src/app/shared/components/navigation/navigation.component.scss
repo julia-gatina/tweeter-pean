@@ -19,7 +19,7 @@
       }
     }
 
-    #write-tweet {
+    .write-tweet {
       font-size: 24px;
       color: $white-white;
       text-decoration: none;
@@ -29,19 +29,19 @@
         transform: scale(1.05);
       }
     }
-  }
-
-  #write-tweet i {
-    animation: MoveUpDown 1s linear infinite;
-    position: relative;
-  }
-
-  @keyframes MoveUpDown {
-    0%, 100% {
-      bottom: 0;
+    .write-tweet i {
+      animation: MoveUpDown 1s linear infinite;
+      position: relative;
     }
-    50% {
-      bottom: 10px;
+
+    @keyframes MoveUpDown {
+      0%, 100% {
+        bottom: 0;
+      }
+      50% {
+        bottom: 10px;
+      }
     }
+
   }
 }
