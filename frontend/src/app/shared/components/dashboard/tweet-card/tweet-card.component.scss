@@ -6,17 +6,24 @@
     border-width: 5px 5px 5px 5px;
     border-color: $sceptic-green;
 
+
     &:hover {
       box-shadow: 2px 2px 8px $yellow-green-green;
       transform: scale(101%);
     }
+
+    .card-body div {
+      font-size: 20px;
+      border: none;
+      border-bottom: 4px solid $sceptic-green;
+    }
+    div i.fas:hover {
+      color: $yellow-green-green;
+    }
   }
 
-  div i.fas:hover {
-    color: $yellow-green-green;
-  }
 
-  .divider {
-    background-color: $hit-grey-grey;
-  }
+  //.divider {
+  //  background-color: $hit-grey-grey;
+  //}
 }
