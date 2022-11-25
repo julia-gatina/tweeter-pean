@@ -7,6 +7,7 @@
     "test": "./node_modules/mocha/bin/mocha.js --reporter spec",
     "start": "DB_USERNAME=tweeter DB_PASSWORD=tweeter DB_PORT=5430 DB_NAME=tweeter node index.js",
     "start:nodemon": "DB_USERNAME=tweeter DB_PASSWORD=tweeter DB_PORT=5430 DB_NAME=tweeter ./node_modules/.bin/nodemon --watch server -e js index.js",
+    "start:pm2local": "DB_USERNAME=tweeter DB_PASSWORD=tweeter pm2 start --only 'api-local'",
     "format:fix": "pretty-quick --staged",
     "lint": "eslint . --ext .js",
     "lint:fix": "npm run lint -- --fix"
