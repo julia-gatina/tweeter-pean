@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'bf-dashboard',
@@ -6,9 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
+  public showTweetInput: boolean = false;
+
   constructor() {}
 
   public onSubmitTweet(tweetText: string): void {
     console.log(tweetText);
+  }
+
+  public onToggleTweetInput(): void {
+    this.showTweetInput = !this.showTweetInput;
   }
 }
