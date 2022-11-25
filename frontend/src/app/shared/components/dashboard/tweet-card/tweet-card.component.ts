@@ -6,8 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./tweet-card.component.scss'],
 })
 export class TweetCardComponent implements OnInit {
-  @Input() userName: string;
-  @Input() avatars: string;
+  @Input() username: string;
+  @Input() avatar: string;
   @Input() handle: string;
   @Input() message: string;
   @Input() createdAtTimestamp: number;
