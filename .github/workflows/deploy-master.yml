@@ -49,10 +49,10 @@ jobs:
           script: |
             cd /opt/backend/${{ env.branch }}
             ls -al
-            pm2 status
-            pm2 stop "api-prod"
-            pm2 delete "api-prod"
-            DB_USERNAME=${{ env.db-username }} DB_PASSWORD=${{ env.db-password }} pm2 start ecosystem.config.js --only "api-prod"
+            sudo pm2 status
+            sudo pm2 stop "api-prod"
+            sudo pm2 delete "api-prod"
+            sudo DB_USERNAME=${{ env.db-username }} DB_PASSWORD=${{ env.db-password }} pm2 start ecosystem.config.js --only "api-prod"
             sudo pm2 save
 
       # 3) Re-Deploy nginx configuration
