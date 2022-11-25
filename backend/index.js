@@ -10,13 +10,15 @@ const POSTGRESQL_DEFAULT_CONFIG = require('node-liquibase').POSTGRESQL_DEFAULT_C
 const SERVER_PORT = process.env.PORT;
 const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME;
+const DB_USERNAME = process.env.DB_USERNAME;
+const DB_PASSWORD = process.env.DB_PASSWORD;
 
 const myConfig = {
   ...POSTGRESQL_DEFAULT_CONFIG,
   changeLogFile: './db/changelog.xml',
-  url: `jdbc:postgresql://localhost:${DB_PORT}/${DB_NAME}`, // TODO null here
-  username: 'tweeter',
-  password: 'tweeter'
+  url: `jdbc:postgresql://localhost:${DB_PORT}/${DB_NAME}`,
+  username: DB_USERNAME,
+  password: DB_PASSWORD
 };
 const instTs = new Liquibase(myConfig);
 instTs.status();
