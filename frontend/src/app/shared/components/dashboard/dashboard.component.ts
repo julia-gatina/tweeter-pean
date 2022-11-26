@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'bf-dashboard',
@@ -14,7 +14,7 @@ export class DashboardComponent {
     console.log(tweetText);
   }
 
-  public onToggleTweetInput(): void {
+  public toggleTweetInputForm(): void {
     this.showTweetInput = !this.showTweetInput;
   }
 }
