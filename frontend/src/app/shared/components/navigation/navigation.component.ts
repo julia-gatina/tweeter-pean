@@ -6,10 +6,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  @Output() toggleTweetInput = new EventEmitter();
+  @Output() onNewTweetClicked = new EventEmitter();
   constructor() {}
 
   public onNewTweetLinkClick(): void {
-    this.toggleTweetInput.emit();
+    this.onNewTweetClicked.emit();
   }
 }
