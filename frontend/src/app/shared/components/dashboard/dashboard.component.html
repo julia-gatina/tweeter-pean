@@ -1,9 +1,9 @@
-<bf-navigation></bf-navigation>
+<bf-navigation (newTweetClicked)="toggleTweetInputForm()"></bf-navigation>
 <div class="container-fluid">
   <div class="row my-5">
     <bf-profile class="col-12 col-md-6"></bf-profile>
     <div class="col-12 col-md-6">
-      <bf-tweet-input (submitTweet)="onSubmitTweet($event)"></bf-tweet-input>
+      <bf-tweet-input *ngIf="showTweetInput" (submitTweet)="onSubmitTweet($event)"></bf-tweet-input>
       <bf-tweet-card
         [username]="'Newton'"
         [avatarImgPath]="'https://i.imgur.com/73hZDYK.png'"
