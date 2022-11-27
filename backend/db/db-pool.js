@@ -1,7 +1,7 @@
 'use strict';
 
 /* imports */
-const envVar = require('./env-vars');
+const envVar = require('../env-vars');
 const { Pool } = require('pg');
 
 const dbPool = new Pool({

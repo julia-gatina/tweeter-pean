@@ -1,6 +1,6 @@
 'use strict';
 
-const dbPool = require('../db-pool');
+const dbPool = require('../db/db-pool');
 
 const getTestData = () => {
   const getTestDataQuery = 'SELECT * FROM test_table_liquibase;';
