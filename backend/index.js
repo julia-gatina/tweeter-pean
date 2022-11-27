@@ -1,32 +1,27 @@
 'use strict';
 
 /* imports */
-const Liquibase = require('node-liquibase').Liquibase;
+const envVar = require('./env-vars');
 const express = require('express');
 const bodyParser = require('body-parser');
-const POSTGRESQL_DEFAULT_CONFIG = require('node-liquibase').POSTGRESQL_DEFAULT_CONFIG;
+const nodeLiquibase = require('node-liquibase');
 
-/* Env variables from ecosystem.config.js */
-const SERVER_PORT = process.env.PORT;
-const DB_PORT = process.env.DB_PORT;
-const DB_NAME = process.env.DB_NAME;
-const DB_USERNAME = process.env.DB_USERNAME;
-const DB_PASSWORD = process.env.DB_PASSWORD;
+/* Test DB connection works  */
+require('./db-pool');
 
 const myConfig = {
-  ...POSTGRESQL_DEFAULT_CONFIG,
+  ...nodeLiquibase.POSTGRESQL_DEFAULT_CONFIG,
   changeLogFile: './db/changelog.xml',
-  url: `jdbc:postgresql://localhost:${DB_PORT}/${DB_NAME}`,
-  username: DB_USERNAME,
-  password: DB_PASSWORD
+  url: `jdbc:postgresql://localhost:${envVar.DB_PORT}/${envVar.DB_NAME}`,
+  username: envVar.DB_USERNAME,
+  password: envVar.DB_PASSWORD
 };
-const instTs = new Liquibase(myConfig);
+const instTs = new nodeLiquibase.Liquibase(myConfig);
 instTs.status();
 instTs.update(null);
 
 // Basic express setup:
 const app = express();
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
@@ -52,6 +47,6 @@ const tweetsRoutes = require('./routes/tweets')(DataHelpers);
 // Mount the backend routes at the "/api" path prefix:
 app.use('/api', tweetsRoutes);
 
-app.listen(SERVER_PORT, () => {
-  console.log('Tweeter backend listening on port ' + SERVER_PORT);
+app.listen(envVar.SERVER_PORT, () => {
+  console.log('Tweeter backend listening on port ' + envVar.SERVER_PORT);
 });

@@ -1,6 +1,7 @@
 'use strict';
 
 const userHelper = require('../lib/util/user-helper');
+const tweetsService = require('../services/tweetsService');
 
 const express = require('express');
 const tweetsRoutes = express.Router();
@@ -10,7 +11,18 @@ module.exports = function (DataHelpers) {
     return res.status(200).send('Hello world, from backend!');
   });
 
-  tweetsRoutes.get('/', function (req, res) {
+  tweetsRoutes.get('/test-db', function (req, res) {
+    tweetsService
+      .getTestData()
+      .then((testData) => {
+        res.status(200).json(testData);
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
+  });
+
+  tweetsRoutes.get('/tweets/all', function (req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -26,15 +38,13 @@ module.exports = function (DataHelpers) {
       return;
     }
 
-    const user = req.body.user
-      ? req.body.user
-      : userHelper.generateRandomUser();
+    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
     const tweet = {
       user: user,
       content: {
-        text: req.body.text,
+        text: req.body.text
       },
-      created_at: Date.now(),
+      created_at: Date.now()
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
