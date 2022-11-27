@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha.js --reporter spec",
     "start": "DB_USERNAME=tweeter DB_PASSWORD=tweeter DB_PORT=5430 DB_NAME=tweeter node index.js",
-    "start:nodemon": "DB_USERNAME=tweeter DB_PASSWORD=tweeter DB_PORT=5430 DB_NAME=tweeter ./node_modules/.bin/nodemon --watch server -e js index.js",
+    "start:nodemon": "DB_USERNAME=tweeter DB_PASSWORD=tweeter DB_PORT=5430 PORT=8080 DB_NAME=tweeter ./node_modules/.bin/nodemon --watch server -e js index.js",
     "start:pm2local": "DB_USERNAME=tweeter DB_PASSWORD=tweeter pm2 start --only 'api-local'",
     "format:fix": "pretty-quick --staged",
     "lint": "eslint . --ext .js",
@@ -33,6 +33,7 @@
     "node-liquibase": "^4.1.1",
     "nodemon": "^1.9.2",
     "npm-run-all": "^4.1.5",
+    "pg": "^8.8.0",
     "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3"
   }
