@@ -11,7 +11,8 @@
     "test:ci": "ng test --watch=false --codeCoverage=true --browsers=ChromeHeadlessNoSandbox",
     "format:fix": "pretty-quick --staged",
     "lint": "ng lint",
-    "lint:fix": "ng lint --fix --force"
+    "lint:fix": "ng lint --fix --force",
+    "editorconfig": "editorconfig-checker --exclude '.git|node_modules|.DS_Store'"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +41,7 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.27.1",
     "@typescript-eslint/parser": "5.27.1",
+    "editorconfig-checker": "^4.0.2",
     "eslint": "^8.17.0",
     "husky": "^1.1.4",
     "jasmine-core": "~4.0.0",
