@@ -7,10 +7,11 @@ import { TweetCardComponent } from './tweet-card/tweet-card.component';
 import { TweetInputComponent } from './tweet-input/tweet-input.component';
 import { FormsModule } from '@angular/forms';
 import { TweeterService } from '../../services/tweeter.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [DashboardComponent, NavigationComponent, ProfileComponent, TweetCardComponent, TweetInputComponent],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   exports: [DashboardComponent],
   providers: [TweeterService],
 })

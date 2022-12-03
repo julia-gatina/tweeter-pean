@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TweeterService } from '../../services/tweeter.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'bf-dashboard',
@@ -17,6 +18,18 @@ export class DashboardComponent {
 
   public toggleTweetInputForm(): void {
     this.showTweetInput = !this.showTweetInput;
-    this.tweeterService.printLine('Test line printed');
+  }
+
+  ngOnInit() {
+    this.tweeterService.getTweets().subscribe(
+      (successResponse) => {
+        // success
+        this.tweeterService.printLine('getTweets returned: ' + successResponse);
+      },
+      (errorResponse) => {
+        // error
+        console.log('error in API call: ' + JSON.stringify(errorResponse));
+      }
+    );
   }
 }
