@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TweeterService {
+  constructor() {}
 
-  constructor() { }
+  public printLine(stringToPrint: string): void {
+    console.log('Printed from TweeterService: ' + stringToPrint);
+  }
 }

@@ -6,10 +6,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { TweetCardComponent } from './tweet-card/tweet-card.component';
 import { TweetInputComponent } from './tweet-input/tweet-input.component';
 import { FormsModule } from '@angular/forms';
+import { TweeterService } from '../../services/tweeter.service';
 
 @NgModule({
   declarations: [DashboardComponent, NavigationComponent, ProfileComponent, TweetCardComponent, TweetInputComponent],
   imports: [CommonModule, FormsModule],
   exports: [DashboardComponent],
+  providers: [TweeterService],
 })
 export class DashboardModule {}

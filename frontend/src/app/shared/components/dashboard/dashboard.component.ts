@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TweeterService } from '../../services/tweeter.service';
 
 @Component({
   selector: 'bf-dashboard',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   public showTweetInput: boolean = false;
 
-  constructor() {}
+  constructor(private tweeterService: TweeterService) {}
 
   public onSubmitTweet(tweetText: string): void {
     console.log(tweetText);
@@ -16,5 +17,6 @@ export class DashboardComponent {
 
   public toggleTweetInputForm(): void {
     this.showTweetInput = !this.showTweetInput;
+    this.tweeterService.printLine('Test line printed');
   }
 }
