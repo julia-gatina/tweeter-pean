@@ -3,8 +3,10 @@
 /* imports */
 const envVar = require('./env-vars');
 const express = require('express');
+const { log } = require('./tools/logger');
 const bodyParser = require('body-parser');
 const nodeLiquibase = require('node-liquibase');
+const swagger = require('./tools/swagger');
 
 /* Test DB connection works  */
 require('./db/db-pool');
@@ -27,6 +29,9 @@ app.use(express.static('public'));
 
 const db = require('./lib/in-memory-db');
 
+// Swagger
+swagger.initialize(app, envVar.SERVER_PORT);
+
 const DataHelpers = require('./lib/data-helpers.js')(db);
 
 require('./lib/date-adjust')();
@@ -39,5 +44,5 @@ const tweetsRoutes = require('./routes/tweets')(DataHelpers);
 app.use('/api', tweetsRoutes);
 
 app.listen(envVar.SERVER_PORT, () => {
-  console.log('Tweeter backend listening on port ' + envVar.SERVER_PORT);
+  log.info('Tweeter backend listening on port ' + envVar.SERVER_PORT);
 });
