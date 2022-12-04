@@ -7,6 +7,19 @@ const express = require('express');
 const tweetsRoutes = express.Router();
 
 module.exports = function (DataHelpers) {
+  /**
+   * @openapi
+   * /api/healthcheck:
+   *  get:
+   *     tags:
+   *     - Healthcheck
+   *     description: Responds if the app is up and running
+   *     responses:
+   *       200:
+   *         description: App is up and running
+   */
+  tweetsRoutes.get('/healthcheck', (req, res) => res.sendStatus(200));
+
   tweetsRoutes.get('/test', function (req, res) {
     return res.status(200).send('Hello world, from backend!');
   });
