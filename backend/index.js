@@ -6,7 +6,7 @@ const express = require('express');
 const { log } = require('./tools/logger');
 const bodyParser = require('body-parser');
 const nodeLiquibase = require('node-liquibase');
-const swagger = require('./tools/swagger');
+const swagger = require('./tools/swagger/swagger');
 
 /* Test DB connection works  */
 require('./db/db-pool');

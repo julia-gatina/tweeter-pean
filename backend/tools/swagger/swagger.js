@@ -1,7 +1,7 @@
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const { version } = require('../package.json');
-const { log } = require('./logger');
+const { version } = require('../../package.json');
+const { log } = require('../logger');
 
 const options = {
   definition: {
@@ -25,7 +25,7 @@ const options = {
       }
     ]
   },
-  apis: ['./routes/tweets.js']
+  apis: ['./routes/tweets.js', './tools/swagger/schemas/*.js']
 };
 
 const swaggerSpec = swaggerJsdoc(options);

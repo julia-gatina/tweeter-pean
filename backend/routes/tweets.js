@@ -35,7 +35,29 @@ module.exports = function (DataHelpers) {
       });
   });
 
-  tweetsRoutes.get('/tweets/all', function (req, res) {
+  /**
+   * @openapi
+   * /api/tweet/all:
+   *  get:
+   *     tags:
+   *     - Tweets
+   *     summary: Gets all tweets
+   *     description: Return all tweets
+   *     responses:
+   *       200:
+   *        description: Success
+   *        content:
+   *          application/json:
+   *            schema:
+   *              type: array
+   *              items:
+   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *       500:
+   *        description: Internal server error
+   *
+   *
+   */
+  tweetsRoutes.get('/tweet/all', function (req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
         res.status(500).json({ error: err.message });
