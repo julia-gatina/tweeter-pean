@@ -13,6 +13,7 @@ module.exports = function (DataHelpers) {
    *  get:
    *     tags:
    *     - Healthcheck
+   *     summary: Checks if the app is up and running
    *     description: Responds if the app is up and running
    *     responses:
    *       200:
@@ -54,8 +55,6 @@ module.exports = function (DataHelpers) {
    *                $ref: '#/components/schemas/GetTweetResponseDto'
    *       500:
    *        description: Internal server error
-   *
-   *
    */
   tweetsRoutes.get('/tweet/all', function (req, res) {
     DataHelpers.getTweets((err, tweets) => {
@@ -67,7 +66,36 @@ module.exports = function (DataHelpers) {
     });
   });
 
-  tweetsRoutes.post('/', function (req, res) {
+  /**
+   * @openapi
+   * /api/tweet:
+   *  post:
+   *     tags:
+   *     - Tweets
+   *     summary: Create new a tweet
+   *     description: Create new a tweet
+   *     requestBody:
+   *         description: Create a new tweet
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/PostTweetRequestDto'
+   *         required: true
+   *     responses:
+   *       200:
+   *        description: Success
+   *        content:
+   *          application/json:
+   *            schema:
+   *              type: array
+   *              items:
+   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *       500:
+   *        description: Internal server error
+   *       400:
+   *        description: Invalid request
+   */
+  tweetsRoutes.post('/tweet', function (req, res) {
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
