@@ -96,7 +96,7 @@ module.exports = function (DataHelpers) {
    *        description: Invalid request
    */
   tweetsRoutes.post('/tweet', function (req, res) {
-    if (!req.body.text) {
+    if (!req.body) {
       res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
     }
@@ -105,7 +105,7 @@ module.exports = function (DataHelpers) {
     const tweet = {
       user: user,
       content: {
-        text: req.body.text
+        text: req.body.content.text
       },
       created_at: Date.now()
     };
@@ -114,6 +114,7 @@ module.exports = function (DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
+        res.json(tweet);
         res.status(201).send();
       }
     });
