@@ -4,7 +4,6 @@
 const envVar = require('./env-vars');
 const express = require('express');
 const { log } = require('./tools/logger');
-const bodyParser = require('body-parser');
 const nodeLiquibase = require('node-liquibase');
 const swagger = require('./tools/swagger/swagger');
 
@@ -24,7 +23,8 @@ instTs.update(null);
 
 // Basic express setup:
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 const db = require('./lib/in-memory-db');
