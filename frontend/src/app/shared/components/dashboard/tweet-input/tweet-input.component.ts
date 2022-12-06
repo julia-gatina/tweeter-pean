@@ -39,6 +39,7 @@ export class TweetInputComponent implements OnInit {
     } else {
       this.errorMsg = null;
       this.newTweetText = null;
+      this.charsCounterToDisplay = this.CHAR_COUNTER_MAX_VALUE;
       this.submitTweet.emit(inputValue);
     }
   }
