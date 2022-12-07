@@ -4,20 +4,9 @@
     <bf-profile class="col-12 col-md-6"></bf-profile>
     <div class="col-12 col-md-6">
       <bf-tweet-input *ngIf="showTweetInput" (submitTweet)="onSubmitTweet($event)"></bf-tweet-input>
-      <bf-tweet-card
-        [username]="'Newton'"
-        [avatarImgPath]="'https://i.imgur.com/73hZDYK.png'"
-        [handle]="'@SirIsaac'"
-        [message]="'If I have seen further it is by standing on the shoulders of giants'"
-        [createdAtTimestamp]="1667863328671"
-      ></bf-tweet-card>
-      <bf-tweet-card
-        [username]="'Descartes'"
-        [avatarImgPath]="'https://i.imgur.com/nlhLi3I.png'"
-        [handle]="'@rd'"
-        [message]="'Je pense , donc je suis'"
-        [createdAtTimestamp]="1667776928671"
-      ></bf-tweet-card>
+      <ng-container *ngIf="tweets">
+        <bf-tweet-card *ngFor="let tweet of tweets" [tweet]="tweet"></bf-tweet-card>
+      </ng-container>
     </div>
   </div>
 </div>
