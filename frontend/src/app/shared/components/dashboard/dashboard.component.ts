@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TweeterService } from '../../services/tweeter.service';
-import { Observable } from 'rxjs';
+import { Tweet } from './dashboard.model';
 
 @Component({
   selector: 'bf-dashboard',
@@ -9,8 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent {
   public showTweetInput: boolean = false;
+  public tweets: Tweet[];
 
   constructor(private tweeterService: TweeterService) {}
+
+  ngOnInit() {
+    this.loadTweets();
+  }
 
   public onSubmitTweet(tweetText: string): void {
     console.log(tweetText);
@@ -20,11 +25,11 @@ export class DashboardComponent {
     this.showTweetInput = !this.showTweetInput;
   }
 
-  ngOnInit() {
+  private loadTweets(): void {
     this.tweeterService.getTweets().subscribe(
-      (successResponse) => {
+      (successResponse: Tweet[]) => {
         // success
-        this.tweeterService.printLine('getTweets returned: ' + successResponse);
+        this.tweets = successResponse;
       },
       (errorResponse) => {
         // error
