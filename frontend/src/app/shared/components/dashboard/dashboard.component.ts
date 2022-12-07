@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TweeterService } from '../../services/tweeter.service';
 import { Tweet } from './dashboard.model';
 
@@ -7,7 +7,7 @@ import { Tweet } from './dashboard.model';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   public showTweetInput: boolean = false;
   public tweets: Tweet[];
 

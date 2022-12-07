@@ -6,7 +6,7 @@ import { Tweet } from '../dashboard.model';
   templateUrl: './tweet-card.component.html',
   styleUrls: ['./tweet-card.component.scss'],
 })
-export class TweetCardComponent {
+export class TweetCardComponent implements OnInit {
   @Input() public tweet: Tweet;
 
   public createdAtMsg: string;
