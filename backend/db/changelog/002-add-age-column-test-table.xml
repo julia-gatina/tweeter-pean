@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet author="rgatin" id="add-age-column">
+
+    <addColumn tableName="test_table_liquibase">
+      <column name="age" type="SMALLINT" />
+    </addColumn>
+
+    <update tableName="test_table_liquibase">
+      <column name="age" value="35" />
+    </update>
+
+    <update tableName="test_table_liquibase">
+      <column name="age" value="18" />
+      <where>id='8d60d5b8-b40f-4616-9ff9-7953af3e3b28'</where>
+    </update>
+
+  </changeSet>
+
+</databaseChangeLog>

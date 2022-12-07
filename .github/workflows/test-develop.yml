@@ -1,0 +1,25 @@
+name: Test develop
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    # Spin up Ubuntu with NodeJS 16
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: cd frontend && npm install && npm run test:ci && npm run lint
+      - run: cd backend && npm install && npm run lint && npm run test

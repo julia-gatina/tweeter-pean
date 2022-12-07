@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet author="rgatin" id="add-place-column">
+
+    <addColumn tableName="test_table_liquibase">
+      <column name="place" type="VARCHAR(255)"/>
+    </addColumn>
+
+  </changeSet>
+
+</databaseChangeLog>
