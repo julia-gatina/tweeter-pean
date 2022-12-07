@@ -1,27 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Tweet } from '../dashboard.model';
 
 @Component({
   selector: 'bf-tweet-card',
   templateUrl: './tweet-card.component.html',
   styleUrls: ['./tweet-card.component.scss'],
 })
-export class TweetCardComponent implements OnInit {
-  @Input() username: string;
-  @Input() avatarImgPath: string;
-  @Input() handle: string;
-  @Input() message: string;
-  @Input() createdAtTimestamp: number;
+export class TweetCardComponent {
+  @Input() public tweet: Tweet;
 
   public createdAtMsg: string;
-
-  private createdAtDate: Date;
 
   constructor() {}
 
   ngOnInit(): void {
-    if (this.createdAtTimestamp) {
-      this.createdAtDate = new Date(this.createdAtTimestamp);
-      this.createdAtMsg = 'Created at: ' + this.createdAtDate.toDateString();
+    if (this.tweet.created_at) {
+      const createdAtDate = new Date(this.tweet.created_at);
+      this.createdAtMsg = 'Created at: ' + createdAtDate.toDateString();
     }
   }
 }
