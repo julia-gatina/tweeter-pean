@@ -14,7 +14,7 @@ export class TweetCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (this.tweet.created_at) {
+    if (this.tweet?.created_at) {
       const createdAtDate = new Date(this.tweet.created_at);
       this.createdAtMsg = 'Created at: ' + createdAtDate.toDateString();
     }
