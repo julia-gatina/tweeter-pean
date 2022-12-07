@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <!--Initial setup -->
+  <include file="db/changelog/000-initial-db.xml" />
+  <include file="db/changelog/001-add-place-column-test-table.xml" />
+  <include file="db/changelog/002-add-age-column-test-table.xml" />
+
+  <!--Load content standards and initial data-->
+  <!--
+  <include file="db/changelog/001-seed-rhea-content-standards-data-element.xml" />
+  <include file="db/changelog/002-seed-rhea-content-standards-data-recipient-type.xml" />
+  <include file="db/changelog/003-seed-rhea-content-standards-data-subject-type.xml" />
+  <include file="db/changelog/004-seed-rhea-content-standards-data-subject-volume.xml" />
+  <include file="db/changelog/005-seed-rhea-content-standards-department.xml" />
+  <include file="db/changelog/006-seed-rhea-content-standards-industry-sector.xml" />
+  <include file="db/changelog/007-seed-rhea-content-standards-legal-basis.xml" />
+  <include file="db/changelog/008-seed-rhea-content-standards-processing-purpose.xml" />
+  <include file="db/changelog/009-seed-rhea-content-standards-security-control.xml" />
+  <include file="db/changelog/010-seed-rhea-processing-purpose-legal-basis-table.xml" />
+  <include file="db/changelog/011-seed-rhea-content-standards-contact-type.xml" />
+  -->
+
+  <!--Post-MVP changeLogs go after this line-->
+  <!--
+  <include file="db/changelog/012-data-element-category.xml" />
+  <include file="db/changelog/013-add-columns-to-reindex-only-audit.xml" />
+  <include file="db/changelog/014-base-record-external.xml" />
+  -->
+
+</databaseChangeLog>
