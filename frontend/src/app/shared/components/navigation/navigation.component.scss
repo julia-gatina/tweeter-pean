@@ -1,4 +1,4 @@
-@import "src/styles/colors";
+@import 'src/styles/colors';
 
 :host {
   .navbar {
@@ -9,7 +9,7 @@
     z-index: 100;
 
     #logo {
-      font-family: "Bungee", "Sans-Serif", cursive;
+      font-family: 'Bungee', 'Sans-Serif', cursive;
       color: white;
       font-size: 33px;
 
@@ -28,13 +28,14 @@
         color: $yellow-yellow;
         transform: scale(1.05);
       }
-      .write-tweet i {
+      div div i {
         animation: MoveUpDown 1s linear infinite;
         position: relative;
       }
 
       @keyframes MoveUpDown {
-        0%, 100% {
+        0%,
+        100% {
           bottom: 0;
         }
         50% {
