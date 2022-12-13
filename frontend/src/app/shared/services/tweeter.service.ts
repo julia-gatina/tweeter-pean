@@ -19,4 +19,11 @@ export class TweeterService {
     const url = `${this.baseURL}/tweet/all`;
     return this.http.get<Tweet[]>(url);
   }
+
+  public postTweet(tweet: Tweet): Observable<Tweet> {
+    const body = tweet;
+    const url = `${this.baseURL}/tweet`;
+
+    return this.http.post<Tweet>(url, body);
+  }
 }
