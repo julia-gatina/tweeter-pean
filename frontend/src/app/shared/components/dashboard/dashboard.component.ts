@@ -24,12 +24,12 @@ export class DashboardComponent implements OnInit {
     } as any;
 
     this.tweeterService.postTweet(tweet).subscribe(
-      (successResponse: Tweet) => {
-        //success
-        this.tweets.unshift(successResponse);
+      //success
+      (savedTweet: Tweet) => {
+        this.tweets.unshift(savedTweet);
       },
-      (errorResponse) => {
-        console.log('Error in post tweet', JSON.stringify(errorResponse));
+      (error) => {
+        console.log('Error in post tweet', JSON.stringify(error));
       }
     );
   }
@@ -40,13 +40,13 @@ export class DashboardComponent implements OnInit {
 
   private loadTweets(): void {
     this.tweeterService.getTweets().subscribe(
-      (successResponse: Tweet[]) => {
-        // success
-        this.tweets = successResponse;
+      // success
+      (tweets: Tweet[]) => {
+        this.tweets = tweets;
       },
-      (errorResponse) => {
+      (error) => {
         // error
-        console.log('error in API call: ' + JSON.stringify(errorResponse));
+        console.log('error in API call: ' + JSON.stringify(error));
       }
     );
   }
