@@ -18,7 +18,20 @@ export class DashboardComponent implements OnInit {
   }
 
   public onSubmitTweet(tweetText: string): void {
-    console.log(tweetText);
+    const tweet: Tweet = {
+      user: { handle: '@test', name: 'Test User' },
+      content: { text: tweetText },
+    } as any;
+
+    this.tweeterService.postTweet(tweet).subscribe(
+      //success
+      (savedTweet: Tweet) => {
+        this.tweets.unshift(savedTweet);
+      },
+      (error) => {
+        console.log('Error in post tweet', JSON.stringify(error));
+      }
+    );
   }
 
   public toggleTweetInputForm(): void {
@@ -27,13 +40,13 @@ export class DashboardComponent implements OnInit {
 
   private loadTweets(): void {
     this.tweeterService.getTweets().subscribe(
-      (successResponse: Tweet[]) => {
-        // success
-        this.tweets = successResponse;
+      // success
+      (tweets: Tweet[]) => {
+        this.tweets = tweets;
       },
-      (errorResponse) => {
+      (error) => {
         // error
-        console.log('error in API call: ' + JSON.stringify(errorResponse));
+        console.log('error in API call: ' + JSON.stringify(error));
       }
     );
   }
