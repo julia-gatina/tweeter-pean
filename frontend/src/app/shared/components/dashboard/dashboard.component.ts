@@ -10,6 +10,7 @@ import { Tweet } from './dashboard.model';
 export class DashboardComponent implements OnInit {
   public showTweetInput: boolean = false;
   public tweets: Tweet[];
+  public tweet: Tweet;
 
   constructor(private tweeterService: TweeterService) {}
 
@@ -19,6 +20,20 @@ export class DashboardComponent implements OnInit {
 
   public onSubmitTweet(tweetText: string): void {
     console.log(tweetText);
+    this.tweet = {
+      user: { handle: '@test', name: 'Test User' },
+      content: { text: tweetText },
+    } as any;
+
+    this.tweeterService.postTweet(this.tweet).subscribe(
+      (successResponse: Tweet) => {
+        //success
+        this.tweets.unshift(successResponse);
+      },
+      (errorResponse) => {
+        console.log('Error in post tweet', JSON.stringify(errorResponse));
+      }
+    );
   }
 
   public toggleTweetInputForm(): void {
