@@ -10,6 +10,7 @@ export class TweetCardComponent implements OnInit {
   @Input() public tweet: Tweet;
 
   public createdAtMsg: string;
+  public userAvatarWithPath: string;
 
   constructor() {}
 
@@ -17,6 +18,10 @@ export class TweetCardComponent implements OnInit {
     if (this.tweet?.created_at) {
       const createdAtDate = new Date(this.tweet.created_at);
       this.createdAtMsg = 'Created at: ' + createdAtDate.toDateString();
+    }
+    if (this.tweet?.user?.avatar) {
+      const avatarUrl = 'https://i.imgur.com/';
+      this.userAvatarWithPath = avatarUrl + this.tweet.user.avatar + '.png';
     }
   }
 }

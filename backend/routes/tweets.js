@@ -102,7 +102,7 @@ module.exports = function (DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    user.avatar = 'https://i.imgur.com/73hZDYK.png';
+    user.avatar = '73hZDYK';
     const tweet = {
       user: user,
       message: req.body.message,
