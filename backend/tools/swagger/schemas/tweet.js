@@ -56,8 +56,7 @@ module.exports = {
        *            handle:
        *              type: string
        *        message:
-       *        type: string
-       *
+       *            type: string
        *      example:
        *        user:
        *          name: Jane Doe
