@@ -13,25 +13,21 @@ module.exports = {
        *          properties:
        *            name:
        *              type: string
-       *            avatars:
+       *            avatar:
        *              type: string
        *            handle:
        *              type: string
-       *        content:
-       *          type: object
-       *          properties:
-       *            text:
-       *              type: string
+       *        message:
+       *          type: string
        *        created_at:
        *          type: number
        *
        *      example:
        *        user:
        *          name: Jane Doe
-       *          avatars: 'https://i.imgur.com/73hZDYK.png'
+       *          avatar: 'https://i.imgur.com/73hZDYK.png'
        *          handle: '@Janedoe'
-       *        content:
-       *          text: 'Some test here'
+       *        message: 'Some test here'
        *        created_at: 1670024330328
        */
       GetTweetResponseDto: {},
@@ -44,36 +40,30 @@ module.exports = {
        *      type: object
        *      required:
        *        - user
-       *        - content
+       *        - message
        *      properties:
        *        user:
        *          type: object
        *          required:
        *            - name
-       *            - avatars
+       *            - avatar
        *            - handle
        *          properties:
        *            name:
        *              type: string
-       *            avatars:
+       *            avatar:
        *              type: string
        *            handle:
        *              type: string
-       *        content:
-       *          type: object
-       *          required:
-       *            - text
-       *          properties:
-       *            text:
-       *              type: string
+       *        message:
+       *        type: string
        *
        *      example:
        *        user:
        *          name: Jane Doe
-       *          avatars: 'https://i.imgur.com/73hZDYK.png'
+       *          avatar: 'https://i.imgur.com/73hZDYK.png'
        *          handle: '@Janedoe'
-       *        content:
-       *          text: 'Some test here'
+       *        message: 'Some test here'
        */
       PostTweetRequestDto: {}
     }
