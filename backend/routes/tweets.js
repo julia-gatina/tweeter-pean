@@ -102,12 +102,10 @@ module.exports = function (DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    user.avatars = 'https://i.imgur.com/73hZDYK.png';
+    user.avatar = 'https://i.imgur.com/73hZDYK.png';
     const tweet = {
       user: user,
-      content: {
-        text: req.body.content.text
-      },
+      message: req.body.message,
       created_at: Date.now()
     };
 
@@ -120,6 +118,5 @@ module.exports = function (DataHelpers) {
       }
     });
   });
-
   return tweetsRoutes;
 };
