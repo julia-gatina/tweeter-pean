@@ -52,7 +52,7 @@ module.exports = function (DataHelpers) {
    *            schema:
    *              type: array
    *              items:
-   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *                $ref: '#/components/schemas/TweetResponseDto'
    *       500:
    *        description: Internal server error
    */
@@ -86,10 +86,7 @@ module.exports = function (DataHelpers) {
    *        description: Success
    *        content:
    *          application/json:
-   *            schema:
-   *              type: array
-   *              items:
-   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *                $ref: '#/components/schemas/TweetResponseDto'
    *       500:
    *        description: Internal server error
    *       400:

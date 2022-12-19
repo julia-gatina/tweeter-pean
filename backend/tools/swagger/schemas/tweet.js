@@ -5,7 +5,7 @@ module.exports = {
        * @openapi
        * components:
        *  schemas:
-       *    GetTweetResponseDto:
+       *    TweetResponseDto:
        *      type: object
        *      properties:
        *        user:
@@ -25,12 +25,12 @@ module.exports = {
        *      example:
        *        user:
        *          name: Jane Doe
-       *          avatar: 'https://i.imgur.com/73hZDYK.png'
+       *          avatar: '73hZDYK'
        *          handle: '@Janedoe'
-       *        message: 'Some test here'
+       *        message: 'Some text here'
        *        created_at: 1670024330328
        */
-      GetTweetResponseDto: {},
+      TweetResponseDto: {},
 
       /**
        * @openapi
@@ -60,9 +60,9 @@ module.exports = {
        *      example:
        *        user:
        *          name: Jane Doe
-       *          avatar: 'https://i.imgur.com/73hZDYK.png'
+       *          avatar: '73hZDYK'
        *          handle: '@Janedoe'
-       *        message: 'Some test here'
+       *        message: 'Some text here'
        */
       PostTweetRequestDto: {}
     }
