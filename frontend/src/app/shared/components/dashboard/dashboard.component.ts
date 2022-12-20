@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   public onSubmitTweet(tweetText: string): void {
     const tweet: Tweet = {
-      user: { handle: '@test', name: 'Test User' },
+      user: { username: '@test', name: 'Test User' },
       content: { text: tweetText },
     } as any;
 
