@@ -86,7 +86,8 @@ module.exports = function (DataHelpers) {
    *        description: Success
    *        content:
    *          application/json:
-   *                $ref: '#/components/schemas/TweetResponseDto'
+   *            schema:
+   *              $ref: '#/components/schemas/TweetResponseDto'
    *       500:
    *        description: Internal server error
    *       400:
