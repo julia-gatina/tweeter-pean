@@ -19,13 +19,11 @@ describe('TweetCardComponent', () => {
     component.tweet = {
       user: {
         name: 'Test Name',
-        avatars: 'https://example.com/img.png',
+        avatar: 'https://example.com/img.png',
         handle: '@TestHandle',
       },
+      message: 'test text',
       created_at: 1670445286,
-      content: {
-        text: 'test text',
-      },
     } as Tweet;
     fixture.detectChanges();
   });

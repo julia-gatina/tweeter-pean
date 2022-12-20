@@ -52,7 +52,7 @@ module.exports = function (DataHelpers) {
    *            schema:
    *              type: array
    *              items:
-   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *                $ref: '#/components/schemas/TweetResponseDto'
    *       500:
    *        description: Internal server error
    */
@@ -87,9 +87,7 @@ module.exports = function (DataHelpers) {
    *        content:
    *          application/json:
    *            schema:
-   *              type: array
-   *              items:
-   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *              $ref: '#/components/schemas/TweetResponseDto'
    *       500:
    *        description: Internal server error
    *       400:
@@ -102,12 +100,10 @@ module.exports = function (DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    user.avatars = 'https://i.imgur.com/73hZDYK.png';
+    user.avatar = '73hZDYK';
     const tweet = {
       user: user,
-      content: {
-        text: req.body.content.text
-      },
+      message: req.body.message,
       created_at: Date.now()
     };
 
@@ -120,6 +116,5 @@ module.exports = function (DataHelpers) {
       }
     });
   });
-
   return tweetsRoutes;
 };

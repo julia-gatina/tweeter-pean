@@ -5,7 +5,7 @@ module.exports = {
        * @openapi
        * components:
        *  schemas:
-       *    GetTweetResponseDto:
+       *    TweetResponseDto:
        *      type: object
        *      properties:
        *        user:
@@ -13,28 +13,24 @@ module.exports = {
        *          properties:
        *            name:
        *              type: string
-       *            avatars:
+       *            avatar:
        *              type: string
        *            handle:
        *              type: string
-       *        content:
-       *          type: object
-       *          properties:
-       *            text:
-       *              type: string
+       *        message:
+       *          type: string
        *        created_at:
        *          type: number
        *
        *      example:
        *        user:
        *          name: Jane Doe
-       *          avatars: 'https://i.imgur.com/73hZDYK.png'
+       *          avatar: '73hZDYK'
        *          handle: '@Janedoe'
-       *        content:
-       *          text: 'Some test here'
+       *        message: 'Some text here'
        *        created_at: 1670024330328
        */
-      GetTweetResponseDto: {},
+      TweetResponseDto: {},
 
       /**
        * @openapi
@@ -44,36 +40,29 @@ module.exports = {
        *      type: object
        *      required:
        *        - user
-       *        - content
+       *        - message
        *      properties:
        *        user:
        *          type: object
        *          required:
        *            - name
-       *            - avatars
+       *            - avatar
        *            - handle
        *          properties:
        *            name:
        *              type: string
-       *            avatars:
+       *            avatar:
        *              type: string
        *            handle:
        *              type: string
-       *        content:
-       *          type: object
-       *          required:
-       *            - text
-       *          properties:
-       *            text:
-       *              type: string
-       *
+       *        message:
+       *            type: string
        *      example:
        *        user:
        *          name: Jane Doe
-       *          avatars: 'https://i.imgur.com/73hZDYK.png'
+       *          avatar: '73hZDYK'
        *          handle: '@Janedoe'
-       *        content:
-       *          text: 'Some test here'
+       *        message: 'Some text here'
        */
       PostTweetRequestDto: {}
     }
