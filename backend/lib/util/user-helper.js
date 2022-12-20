@@ -3,8 +3,6 @@
 const Chance = require('chance'),
   chance = new Chance();
 
-//const md5 = require('md5');
-
 module.exports = {
   generateRandomUser: () => {
     const gender = chance.gender();
@@ -26,7 +24,7 @@ module.exports = {
       username += suffix;
     }
 
-    const avatars = {
+    const avatar = {
       Female: [
         'https://i.imgur.com/nlhLi3I.png',
         'https://i.imgur.com/z5LNkkB.png',
@@ -43,13 +41,13 @@ module.exports = {
       ]
     };
 
-    const avatarArray = avatars[gender];
+    const avatarArray = avatar[gender];
     const userAvatar = avatarArray[Math.floor(Math.random() * avatarArray.length)];
 
     return {
       name: userName,
       username: username,
-      avatars: userAvatar
+      avatar: userAvatar
     };
   }
 };

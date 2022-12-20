@@ -22,8 +22,8 @@ describe('TweetCardComponent', () => {
         avatar: 'https://example.com/img.png',
         username: '@TestUsername',
       },
-      created_at: 1670445286,
       message: 'test text',
+      created_at: 1670445286,
     } as Tweet;
     fixture.detectChanges();
   });
