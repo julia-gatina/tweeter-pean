@@ -5,7 +5,7 @@
 
   <changeSet author="jgatina" id="add-user-and-tweet-tables">
     <!-- create user table with liquibase  -->
-    <createTable tableName="user">
+    <createTable tableName="user_">
       <column name="id" type="VARCHAR(255)">
         <constraints primaryKey="true"/>
       </column>
@@ -17,7 +17,7 @@
 
     <!--     insert into tweet table with SQL -->
     <sql>
-      INSERT INTO user (id, name, username, avatar)
+      INSERT INTO user_ (id, name, username, avatar)
       VALUES ('1b67b670-87de-4d48-8ac9-1021c4a35503', 'Maggy Blake', '@MBlake', 'lRUnDgU'),
              ('2d905533-a914-4e64-af68-a729697592ab', 'Jane Doe', '@JaneD', '3GvwNBf'),
              ('6e899c62-76b4-413a-a244-996bebfff3f0', 'John Smith', '@Johnny', '5fUVPRP')
@@ -42,7 +42,7 @@
     <addForeignKeyConstraint constraintName="fk_tweet_user"
                              baseTableName="tweet"
                              baseColumnNames="user_id"
-                             referencedTableName="user"
+                             referencedTableName="user_"
                              referencedColumnNames="id"
                              onDelete="CASCADE"
                              onUpdate="NO ACTION"
