@@ -1,11 +1,8 @@
 export interface Tweet {
-  user: TweetUser;
-  message: string;
-  created_at: number;
-}
-
-export interface TweetUser {
   name: string;
-  avatar: string;
   username: string;
+  avatar: string;
+  message: string;
+  created_at: Date;
+  type: string;
 }
