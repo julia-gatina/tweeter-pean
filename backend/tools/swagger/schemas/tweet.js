@@ -22,8 +22,8 @@ module.exports = {
        *          type: string
        *
        *      example:
-       *        name: Jane Doe
-       *        username: @JaneDoe
+       *        name: 'Jane Doe'
+       *        username: '@JaneDoe'
        *        avatar: '73hZDYK'
        *        message: 'Some text here'
        *        type: 'tweet'
@@ -56,11 +56,12 @@ module.exports = {
        *              type: string
        *        message:
        *            type: string
+       *
        *      example:
        *        user:
-       *          name: Jane Doe
+       *          name: 'Jane Doe'
        *          avatar: '73hZDYK'
-       *          handle: '@Janedoe'
+       *          handle: '@JaneDoe'
        *        message: 'Some text here'
        */
       PostTweetRequestDto: {}
