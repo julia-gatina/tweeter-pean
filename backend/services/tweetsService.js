@@ -14,6 +14,27 @@ const getTestData = () => {
     });
 };
 
+const getAllTweets = () => {
+  const getTweetsDataQuery = `SELECT user_.name,
+                                     user_.username,
+                                     user_.avatar,
+                                     tweet.message,
+                                     tweet.created_at,
+                                     tweet.type
+                              FROM tweet
+                                     INNER JOIN user_ on user_id = user_.id
+                              ORDER BY tweet.created_at DESC;`;
+  return dbPool
+    .query(getTweetsDataQuery, '')
+    .then((success) => {
+      return success.rows;
+    })
+    .catch((error) => {
+      console.error('Failed to fetch tweets data.', error);
+    });
+};
+
 module.exports = {
-  getTestData
+  getTestData,
+  getAllTweets
 };
