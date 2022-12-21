@@ -8,27 +8,26 @@ module.exports = {
        *    TweetResponseDto:
        *      type: object
        *      properties:
-       *        user:
-       *          type: object
-       *          properties:
-       *            name:
-       *              type: string
-       *            avatar:
-       *              type: string
-       *            handle:
-       *              type: string
+       *        name:
+       *          type: string
+       *        username:
+       *          type: string
+       *        avatar:
+       *          type: string
        *        message:
        *          type: string
        *        created_at:
-       *          type: number
+       *          type: Date
+       *        type:
+       *          type: string
        *
        *      example:
-       *        user:
-       *          name: Jane Doe
-       *          avatar: '73hZDYK'
-       *          handle: '@Janedoe'
+       *        name: Jane Doe
+       *        username: @JaneDoe
+       *        avatar: '73hZDYK'
        *        message: 'Some text here'
-       *        created_at: 1670024330328
+       *        type: 'tweet'
+       *        created_at: 2022-12-10
        */
       TweetResponseDto: {},
 
