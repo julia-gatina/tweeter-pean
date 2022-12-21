@@ -32,6 +32,7 @@ describe('TweetCardComponent', () => {
   });
 
   it('should generate createdAtMsg', () => {
-    expect(component.createdAtMsg).toEqual('Created at: ', Date.now());
+    const date = new Date();
+    expect(component.createdAtMsg).toEqual('Created at: ' + date);
   });
 });
