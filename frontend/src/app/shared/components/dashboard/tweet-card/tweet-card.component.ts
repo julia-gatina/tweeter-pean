@@ -15,10 +15,10 @@ export class TweetCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const avatar = this.tweet?.user?.avatar;
-    if (this.tweet?.created_at) {
-      const createdAtDate = new Date(this.tweet.created_at);
-      this.createdAtMsg = 'Created at: ' + createdAtDate.toDateString();
+    const avatar = this.tweet?.avatar;
+    const tweetDate = this.tweet?.created_at;
+    if (tweetDate) {
+      this.createdAtMsg = 'Created at: ' + tweetDate;
     }
     if (avatar) {
       const avatarUrl = 'https://i.imgur.com/';
