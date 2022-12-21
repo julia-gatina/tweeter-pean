@@ -17,13 +17,12 @@ describe('TweetCardComponent', () => {
     fixture = TestBed.createComponent(TweetCardComponent);
     component = fixture.componentInstance;
     component.tweet = {
-      user: {
-        name: 'Test Name',
-        avatar: 'https://example.com/img.png',
-        username: '@TestUsername',
-      },
+      name: 'Test Name',
+      username: '@TestUsername',
+      avatar: 'https://example.com/img.png',
       message: 'test text',
-      created_at: 1670445286,
+      created_at: new Date(),
+      type: 'tweet',
     } as Tweet;
     fixture.detectChanges();
   });
@@ -33,6 +32,6 @@ describe('TweetCardComponent', () => {
   });
 
   it('should generate createdAtMsg', () => {
-    expect(component.createdAtMsg).toEqual('Created at: Tue Jan 20 1970');
+    expect(component.createdAtMsg).toEqual('Created at: ', Date.now());
   });
 });
