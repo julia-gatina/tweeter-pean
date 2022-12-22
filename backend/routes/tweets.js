@@ -1,12 +1,11 @@
 'use strict';
 
-const userHelper = require('../lib/util/user-helper');
-const tweetsService = require('../services/tweetsService');
+const tweetsService = require('../services/tweets/tweetsService');
 
 const express = require('express');
 const tweetsRoutes = express.Router();
 
-module.exports = function (DataHelpers) {
+module.exports = function () {
   /**
    * @openapi
    * /api/healthcheck:
@@ -52,18 +51,19 @@ module.exports = function (DataHelpers) {
    *            schema:
    *              type: array
    *              items:
-   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *                $ref: '#/components/schemas/TweetResponseDto'
    *       500:
    *        description: Internal server error
    */
   tweetsRoutes.get('/tweet/all', function (req, res) {
-    DataHelpers.getTweets((err, tweets) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.json(tweets);
-      }
-    });
+    tweetsService
+      .getAllTweets()
+      .then((tweets) => {
+        res.status(200).json(tweets);
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
   });
 
   /**
@@ -87,38 +87,27 @@ module.exports = function (DataHelpers) {
    *        content:
    *          application/json:
    *            schema:
-   *              type: array
-   *              items:
-   *                $ref: '#/components/schemas/GetTweetResponseDto'
+   *              $ref: '#/components/schemas/TweetResponseDto'
    *       500:
    *        description: Internal server error
    *       400:
    *        description: Invalid request
    */
   tweetsRoutes.post('/tweet', function (req, res) {
-    if (!req.body) {
-      res.status(400).json({ error: 'invalid request: no data in POST body' });
+    const tweetDto = req.body;
+    if (!tweetDto) {
+      res.status(400).json({ error: 'invalid request: no tweet data in POST body' });
       return;
     }
 
-    const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    const tweet = {
-      user: user,
-      content: {
-        text: req.body.content.text
-      },
-      created_at: Date.now()
-    };
-
-    DataHelpers.saveTweet(tweet, (err) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.json(tweet);
-        res.status(201).send();
-      }
-    });
+    tweetsService
+      .createTweet(tweetDto)
+      .then((savedTweet) => {
+        res.status(200).json(savedTweet);
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
   });
-
   return tweetsRoutes;
 };

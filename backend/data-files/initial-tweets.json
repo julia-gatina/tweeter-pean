@@ -2,23 +2,19 @@
   {
     "user": {
       "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
+      "avatar": "https://i.imgur.com/73hZDYK.png",
+      "username": "@SirIsaac"
     },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1670188127982
+    "message": "If I have seen further it is by standing on the shoulders of giants",
+    "created_at": 1671499471579
   },
   {
     "user": {
       "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
+      "avatar": "nlhLi3I",
+      "username": "@rd"
     },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1670274527982
+    "message": "Je pense , donc je suis",
+    "created_at": 1671585871579
   }
 ]
