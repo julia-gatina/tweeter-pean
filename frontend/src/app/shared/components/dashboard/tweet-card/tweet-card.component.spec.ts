@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TweetCardComponent } from './tweet-card.component';
 import { Tweet } from '../dashboard.model';
+import { TweetType } from '../dashboard.enum';
 
 describe('TweetCardComponent', () => {
   let component: TweetCardComponent;
@@ -19,10 +20,10 @@ describe('TweetCardComponent', () => {
     component.tweet = {
       name: 'Test Name',
       username: '@TestUsername',
-      avatar: 'https://example.com/img.png',
+      avatar: '73hZDYK',
       message: 'test text',
       created_at: new Date(),
-      type: 'tweet',
+      type: TweetType.Tweet,
     } as Tweet;
     fixture.detectChanges();
   });
