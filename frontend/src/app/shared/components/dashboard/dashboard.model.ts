@@ -1,11 +1,10 @@
-export interface Tweet {
-  user: TweetUser;
-  message: string;
-  created_at: number;
-}
+import { TweetType } from './dashboard.enum';
 
-export interface TweetUser {
+export interface Tweet {
   name: string;
+  username: string;
   avatar: string;
-  handle: string;
+  message: string;
+  created_at: Date;
+  type: TweetType;
 }

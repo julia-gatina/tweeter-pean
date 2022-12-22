@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TweeterService } from '../../services/tweeter.service';
 import { Tweet } from './dashboard.model';
+import { TweetType } from './dashboard.enum';
 
 @Component({
   selector: 'bf-dashboard',
@@ -19,8 +20,8 @@ export class DashboardComponent implements OnInit {
 
   public onSubmitTweet(tweetText: string): void {
     const tweet: Tweet = {
-      user: { handle: '@test', name: 'Test User' },
       message: tweetText,
+      type: TweetType.Tweet,
     } as any;
 
     this.tweeterService.postTweet(tweet).subscribe(

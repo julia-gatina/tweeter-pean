@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TweetCardComponent } from './tweet-card.component';
 import { Tweet } from '../dashboard.model';
+import { TweetType } from '../dashboard.enum';
 
 describe('TweetCardComponent', () => {
   let component: TweetCardComponent;
@@ -17,13 +18,12 @@ describe('TweetCardComponent', () => {
     fixture = TestBed.createComponent(TweetCardComponent);
     component = fixture.componentInstance;
     component.tweet = {
-      user: {
-        name: 'Test Name',
-        avatar: 'https://example.com/img.png',
-        handle: '@TestHandle',
-      },
+      name: 'Test Name',
+      username: '@TestUsername',
+      avatar: '73hZDYK',
       message: 'test text',
-      created_at: 1670445286,
+      created_at: new Date(),
+      type: TweetType.Tweet,
     } as Tweet;
     fixture.detectChanges();
   });
@@ -33,6 +33,7 @@ describe('TweetCardComponent', () => {
   });
 
   it('should generate createdAtMsg', () => {
-    expect(component.createdAtMsg).toEqual('Created at: Tue Jan 20 1970');
+    const date = new Date();
+    expect(component.createdAtMsg).toEqual('Created at: ' + date);
   });
 });
