@@ -38,30 +38,16 @@ module.exports = {
        *    PostTweetRequestDto:
        *      type: object
        *      required:
-       *        - user
+       *        - type
        *        - message
        *      properties:
-       *        user:
-       *          type: object
-       *          required:
-       *            - name
-       *            - avatar
-       *            - handle
-       *          properties:
-       *            name:
-       *              type: string
-       *            avatar:
-       *              type: string
-       *            handle:
-       *              type: string
+       *        type:
+       *          type: TweetType
        *        message:
        *            type: string
        *
        *      example:
-       *        user:
-       *          name: 'Jane Doe'
-       *          avatar: '73hZDYK'
-       *          handle: '@JaneDoe'
+       *        type: 'tweet'
        *        message: 'Some text here'
        */
       PostTweetRequestDto: {}
