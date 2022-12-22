@@ -3,7 +3,6 @@
 //import { v4 as uuidv4 } from 'uuid';
 const { v4: uuidv4 } = require('uuid');
 const format = require('date-format');
-
 const tweetsRepository = require('./tweetsRepository');
 
 const getTestData = async () => {
@@ -11,7 +10,7 @@ const getTestData = async () => {
 };
 
 /**
- * Get Tweets and converts each to TweetDto
+ * Gets random user, passes tweetDto converted to dbTweet to be saved to db and returns that saved tweet as tweetDto
  */
 const createTweet = async (tweetDto) => {
   const user = await getRandomUser();
