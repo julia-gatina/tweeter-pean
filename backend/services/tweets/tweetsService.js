@@ -10,7 +10,7 @@ const getTestData = async () => {
 };
 
 /**
- * Gets random user, passes tweetDto converted to dbTweet to be saved to db and returns that saved tweet as tweetDto
+ * Creates new tweet
  */
 const createTweet = async (tweetDto) => {
   const user = await getRandomUser();
