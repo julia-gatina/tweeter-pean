@@ -22,7 +22,7 @@ describe('TweetCardComponent', () => {
       username: '@TestUsername',
       avatar: '73hZDYK',
       message: 'test text',
-      created_at: new Date(),
+      created_at: new Date().toDateString(),
       type: TweetType.Tweet,
     } as Tweet;
     fixture.detectChanges();
@@ -32,8 +32,8 @@ describe('TweetCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should generate createdAtMsg', () => {
-    const date = new Date();
-    expect(component.createdAtMsg).toEqual('Created at: ' + date);
+  it('should generate complete avatar URL', () => {
+    const avatarUrl = 'https://i.imgur.com/';
+    expect(component.userAvatarWithPath).toEqual(avatarUrl + component.tweet.avatar + '.png');
   });
 });
