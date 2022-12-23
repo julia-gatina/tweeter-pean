@@ -1,8 +1,6 @@
 'use strict';
 
-//import { v4 as uuidv4 } from 'uuid';
 const { v4: uuidv4 } = require('uuid');
-const format = require('date-format');
 const tweetsRepository = require('./tweetsRepository');
 
 const getTestData = async () => {
