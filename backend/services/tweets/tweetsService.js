@@ -1,8 +1,6 @@
 'use strict';
 
-//import { v4 as uuidv4 } from 'uuid';
 const { v4: uuidv4 } = require('uuid');
-const format = require('date-format');
 const tweetsRepository = require('./tweetsRepository');
 
 const getTestData = async () => {
@@ -45,13 +43,13 @@ const getAllTweets = async () => {
 };
 
 function dbTweetToTweetDto(dbTweet) {
-  const formattedDate = format('dd-MM-yyyy', dbTweet.created_at);
+  const epochTimestamp = Date.parse(dbTweet.created_at);
   const tweetDto = {
     name: dbTweet.name,
     username: dbTweet.username,
     avatar: dbTweet.avatar,
     message: dbTweet.message,
-    created_at: formattedDate,
+    created_at: epochTimestamp,
     type: dbTweet.type
   };
   return tweetDto;
