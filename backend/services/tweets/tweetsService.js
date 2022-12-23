@@ -43,13 +43,13 @@ const getAllTweets = async () => {
 };
 
 function dbTweetToTweetDto(dbTweet) {
-  const formattedDate = dbTweet.created_at.toDateString();
+  const epochTimestamp = Date.parse(dbTweet.created_at);
   const tweetDto = {
     name: dbTweet.name,
     username: dbTweet.username,
     avatar: dbTweet.avatar,
     message: dbTweet.message,
-    created_at: formattedDate,
+    created_at: epochTimestamp,
     type: dbTweet.type
   };
   return tweetDto;
