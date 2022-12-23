@@ -22,7 +22,7 @@ describe('TweetCardComponent', () => {
       username: '@TestUsername',
       avatar: '73hZDYK',
       message: 'test text',
-      created_at: new Date().toDateString(),
+      created_at: 1670959872000,
       type: TweetType.Tweet,
     } as Tweet;
     fixture.detectChanges();
