@@ -22,7 +22,6 @@
   "devDependencies": {
     "@prettier/plugin-xml": "^2.2.0",
     "chai": "^4.3.7",
-    "date-format": "^4.0.14",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
