@@ -17,7 +17,7 @@ module.exports = {
        *        message:
        *          type: string
        *        created_at:
-       *          type: Date
+       *          type: timestamp
        *        type:
        *          type: string
        *
@@ -27,7 +27,7 @@ module.exports = {
        *        avatar: '73hZDYK'
        *        message: 'Some text here'
        *        type: 'tweet'
-       *        created_at: 2022-12-10
+       *        created_at: 'Tue Dec 13 2022'
        */
       TweetResponseDto: {},
 
