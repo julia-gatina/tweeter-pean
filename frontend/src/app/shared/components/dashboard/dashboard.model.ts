@@ -5,6 +5,6 @@ export interface Tweet {
   username: string;
   avatar: string;
   message: string;
-  created_at: Date;
+  created_at: string;
   type: TweetType;
 }
