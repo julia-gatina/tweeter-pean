@@ -9,14 +9,15 @@ import { Tweet } from '../dashboard.model';
 export class TweetCardComponent implements OnInit {
   @Input() public tweet: Tweet;
 
-  public createdAtMsg: string;
+  public userAvatarWithPath: string;
 
   constructor() {}
 
   ngOnInit(): void {
-    if (this.tweet?.created_at) {
-      const createdAtDate = new Date(this.tweet.created_at);
-      this.createdAtMsg = 'Created at: ' + createdAtDate.toDateString();
+    const avatar = this.tweet?.avatar;
+    if (avatar) {
+      const avatarUrl = 'https://i.imgur.com/';
+      this.userAvatarWithPath = avatarUrl + avatar + '.png';
     }
   }
 }

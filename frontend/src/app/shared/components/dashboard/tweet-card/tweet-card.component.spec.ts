@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TweetCardComponent } from './tweet-card.component';
 import { Tweet } from '../dashboard.model';
+import { TweetType } from '../dashboard.enum';
 
 describe('TweetCardComponent', () => {
   let component: TweetCardComponent;
@@ -17,15 +18,12 @@ describe('TweetCardComponent', () => {
     fixture = TestBed.createComponent(TweetCardComponent);
     component = fixture.componentInstance;
     component.tweet = {
-      user: {
-        name: 'Test Name',
-        avatars: 'https://example.com/img.png',
-        handle: '@TestHandle',
-      },
-      created_at: 1670445286,
-      content: {
-        text: 'test text',
-      },
+      name: 'Test Name',
+      username: '@TestUsername',
+      avatar: '73hZDYK',
+      message: 'test text',
+      created_at: 1670959872000,
+      type: TweetType.Tweet,
     } as Tweet;
     fixture.detectChanges();
   });
@@ -34,7 +32,8 @@ describe('TweetCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should generate createdAtMsg', () => {
-    expect(component.createdAtMsg).toEqual('Created at: Tue Jan 20 1970');
+  it('should generate complete avatar URL', () => {
+    const avatarUrl = 'https://i.imgur.com/';
+    expect(component.userAvatarWithPath).toEqual(avatarUrl + component.tweet.avatar + '.png');
   });
 });

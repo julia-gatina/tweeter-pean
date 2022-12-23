@@ -1,0 +1,67 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet author="jgatina" id="add-user-and-tweet-tables">
+    <!-- create user table with liquibase  -->
+    <createTable tableName="user_">
+      <column name="id" type="VARCHAR(255)">
+        <constraints primaryKey="true"/>
+      </column>
+      <column name="name" type="VARCHAR(255)" remarks="Name of the user."/>
+      <column name="username" type="VARCHAR(255)" remarks="Username of the user"/>
+      <column name="avatar" type="VARCHAR(255)"
+              remarks="Only filename (without extension) for the URL storing user avatar"/>
+    </createTable>
+
+    <!--     insert into tweet table with SQL -->
+    <sql>
+      INSERT INTO user_ (id, name, username, avatar)
+      VALUES ('1b67b670-87de-4d48-8ac9-1021c4a35503', 'Maggy Blake', '@MBlake', 'lRUnDgU'),
+             ('2d905533-a914-4e64-af68-a729697592ab', 'Jane Doe', '@JaneD', '3GvwNBf'),
+             ('6e899c62-76b4-413a-a244-996bebfff3f0', 'John Smith', '@Johnny', '5fUVPRP')
+    </sql>
+
+    <!-- create tweet table with liquibase  -->
+    <createTable tableName="tweet">
+      <column name="id" type="VARCHAR(255)">
+        <constraints primaryKey="true"/>
+      </column>
+      <!-- types: 'tweet', 'reply' -->
+      <column name="type" type="VARCHAR(255)" defaultValue="tweet"
+              remarks="Field to differentiate between the actual tweets and their replies."/>
+      <column name="message" type="VARCHAR(255)" remarks="Tweet or reply message text."/>
+      <column name="created_at" type="DATE" remarks="Date when tweet was posted."/>
+      <column name="user_id" type="VARCHAR(255)" remarks="ID of the user who posted this tweet.">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <!--     Add foreign key to connect user and tweet tables -->
+    <addForeignKeyConstraint constraintName="fk_tweet_user"
+                             baseTableName="tweet"
+                             baseColumnNames="user_id"
+                             referencedTableName="user_"
+                             referencedColumnNames="id"
+                             onDelete="CASCADE"
+                             onUpdate="NO ACTION"
+    />
+
+    <!--     insert into tweet table with SQL -->
+    <sql>
+      INSERT INTO tweet (id, type, message, created_at, user_id)
+      VALUES ('6f7b9f33-45fc-4257-9f21-1aefa4be33c5', 'tweet',
+              'When in doubt, look intelligent.', '2022-12-08', '1b67b670-87de-4d48-8ac9-1021c4a35503'),
+             ('edf616e4-0720-41fb-8620-fde82a7b85d3', 'tweet',
+              'Doing nothing is very hard to do. You never know when you’re finished.', '2022-12-09',
+              '6e899c62-76b4-413a-a244-996bebfff3f0'),
+             ('b312d72e-2e8d-406e-b1b4-84c9d1c91883', 'tweet',
+              'Sometimes it takes only one act of kindness and caring to change a person’s life.', '2022-12-10',
+              '2d905533-a914-4e64-af68-a729697592ab'),
+             ('f9e10b40-5191-4e5b-b74b-8f0692b52f7c', 'tweet',
+              'The bad news is time flies. The good news is you are the pilot.', '2022-12-11',
+              '6e899c62-76b4-413a-a244-996bebfff3f0')
+    </sql>
+  </changeSet>
+</databaseChangeLog>

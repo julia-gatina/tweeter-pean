@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet author="jgatina" id="modify-created-at-column">
+    <!-- change Date column type to timestamp type  -->
+    <modifyDataType
+      columnName="created_at"
+      newDataType="timestamp"
+      tableName="tweet"/>
+
+    <!-- update created_at values to timestamp values in tweet table with SQL -->
+    <sql>
+      UPDATE tweet
+      SET created_at = '2022-12-10 17:31:12.66'
+      WHERE id = '16f7b9f33-45fc-4257-9f21-1aefa4be33c5';
+      UPDATE tweet
+      SET created_at = '2022-12-11 18:31:12.66'
+      WHERE id = 'edf616e4-0720-41fb-8620-fde82a7b85d3';
+      UPDATE tweet
+      SET created_at = '2022-12-12 5:31:12.00'
+      WHERE id = 'b312d72e-2e8d-406e-b1b4-84c9d1c91883';
+      UPDATE tweet
+      SET created_at = '2022-12-13 11:31:12.66'
+      WHERE id = 'f9e10b40-5191-4e5b-b74b-8f0692b52f7c';
+    </sql>
+
+  </changeSet>
+</databaseChangeLog>
