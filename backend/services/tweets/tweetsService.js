@@ -45,7 +45,7 @@ const getAllTweets = async () => {
 };
 
 function dbTweetToTweetDto(dbTweet) {
-  const formattedDate = format('dd-MM-yyyy', dbTweet.created_at);
+  const formattedDate = dbTweet.created_at.toDateString();
   const tweetDto = {
     name: dbTweet.name,
     username: dbTweet.username,
