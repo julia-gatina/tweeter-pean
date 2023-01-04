@@ -4,7 +4,18 @@
       <img src="{{ userAvatarWithPath }}" alt="User Avatar" />
     </div>
     <div class="col-3 d-flex align-items-center justify-content-start">{{ tweet?.name }}</div>
-    <div class="col-7 d-flex align-items-center justify-content-end">{{ tweet?.username }}</div>
+    <div class="col-6 d-flex align-items-center justify-content-end">{{ tweet?.username }}</div>
+    <div class="col-1 d-flex align-items-start justify-content-end pr-0">
+      <button
+        type="button"
+        class="btn btn-outline-danger btn-sm"
+        data-toggle="tooltip"
+        data-placement="left"
+        title="Delete Tweet"
+      >
+        X
+      </button>
+    </div>
   </div>
   <div class="card-body">
     <div class="pb-3">{{ tweet?.message }}</div>
