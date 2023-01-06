@@ -31,7 +31,7 @@ export class TweetInputComponent implements OnInit {
   }
 
   public onTweetBtnClick(): void {
-    const inputValue = this.newTweetText.trim();
+    const inputValue = this.newTweetText?.trim();
 
     if (!inputValue) {
       this.errorMsg = 'Input can not be empty';
