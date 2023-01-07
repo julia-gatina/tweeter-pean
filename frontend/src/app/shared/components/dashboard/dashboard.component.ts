@@ -39,6 +39,17 @@ export class DashboardComponent implements OnInit {
     this.showTweetInput = !this.showTweetInput;
   }
 
+  public onDeleteTweet(tweetId: string): void {
+    this.tweeterService.deleteTweet(tweetId).subscribe(
+      (success) => {
+        this.tweets = this.tweets.filter((tweet) => tweet.id !== tweetId);
+      },
+      (error) => {
+        console.log('Error in delete tweet', JSON.stringify(error));
+      }
+    );
+  }
+
   private loadTweets(): void {
     this.tweeterService.getTweets().subscribe(
       // success
@@ -48,25 +59,6 @@ export class DashboardComponent implements OnInit {
       (error) => {
         // error
         console.log('error in API call: ' + JSON.stringify(error));
-      }
-    );
-  }
-
-  onDeleteTweet(tweetId) {
-    this.tweeterService.deleteTweet(tweetId).subscribe(
-      //success
-      (success) => {
-        console.log('Tweet deleted successfully, msg from dashboard component');
-        this.tweets.find(
-          (tweet, index) => {
-            if (tweet?.id === tweetId) {
-              this.tweets.splice(index, 1);
-            }
-          },
-          (error) => {
-            console.log('Error in delete tweet', JSON.stringify(error));
-          }
-        );
       }
     );
   }
