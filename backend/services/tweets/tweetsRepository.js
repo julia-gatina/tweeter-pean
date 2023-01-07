@@ -31,12 +31,13 @@ const saveTweet = (dbTweet) => {
 const deleteTweetById = (tweetId) => {
   const query = `DELETE
                  from tweet
-                 WHERE id = $1 RETURNING *`;
+                 WHERE id = $1`;
   const params = [tweetId];
   return dbPool
     .query(query, params)
     .then((success) => {
-      return success.rows[0];
+      return true;
+      return true;
     })
     .catch((error) => {
       console.error('Failed to delete tweet.', error);
