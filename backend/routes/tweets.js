@@ -66,7 +66,32 @@ module.exports = function () {
       });
   });
 
-  tweetsRoutes.delete('/tweet/delete/:id', function (req, res) {
+  /**
+   * @openapi
+   * /api/tweet/{id}:
+   *  delete:
+   *     tags:
+   *     - Tweets
+   *     summary: Deletes tweet
+   *     description: Delete tweet
+   *     parameters:
+   *      - name: id
+   *        in: path
+   *        description: Tweet id to delete
+   *        required: true
+   *        schema:
+   *          type: string
+   *     responses:
+   *       204:
+   *        description: Success, no content
+   *       500:
+   *        description: Internal server error
+   *       404:
+   *        description: Not found
+   *       400:
+   *        description: invalid request no tweet ID in DELETE request
+   */
+  tweetsRoutes.delete('/tweet/:id', function (req, res) {
     const tweetId = req.params.id;
     if (!tweetId) {
       res.status(400).json({ error: 'invalid request: no tweet ID in DELETE request' });
@@ -75,8 +100,12 @@ module.exports = function () {
 
     tweetsService
       .deleteTweet(tweetId)
-      .then((success) => {
-        res.status(200).json(success);
+      .then((successfullyDeleted) => {
+        if (successfullyDeleted) {
+          res.status(204).end();
+        } else {
+          res.status(404).end();
+        }
       })
       .catch((error) => {
         res.status(500).json({ error: error.message });
