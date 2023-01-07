@@ -17,13 +17,13 @@
       border: none;
       border-bottom: 4px solid $sceptic-green;
     }
+
     div i.fas:hover {
       color: $yellow-green-green;
     }
   }
 
-
-  //.divider {
-  //  background-color: $hit-grey-grey;
-  //}
+  .dropdown-menu {
+    min-width: 7rem;
+  }
 }

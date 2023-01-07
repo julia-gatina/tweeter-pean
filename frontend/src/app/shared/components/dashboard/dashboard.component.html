@@ -5,7 +5,11 @@
     <div class="col-12 col-md-6">
       <bf-tweet-input *ngIf="showTweetInput" (submitTweet)="onSubmitTweet($event)"></bf-tweet-input>
       <ng-container *ngIf="tweets">
-        <bf-tweet-card *ngFor="let tweet of tweets" [tweet]="tweet"></bf-tweet-card>
+        <bf-tweet-card
+          *ngFor="let tweet of tweets"
+          [tweet]="tweet"
+          (deleteTweet)="onDeleteTweet($event)"
+        ></bf-tweet-card>
       </ng-container>
     </div>
   </div>
