@@ -4,17 +4,23 @@
       <img src="{{ userAvatarWithPath }}" alt="User Avatar" />
     </div>
     <div class="col-3 d-flex align-items-center justify-content-start">{{ tweet?.name }}</div>
-    <div class="col-6 d-flex align-items-center justify-content-end">{{ tweet?.username }}</div>
-    <div class="col-1 d-flex align-items-start justify-content-end pr-0">
-      <button
-        type="button"
-        class="btn btn-outline-danger btn-sm"
-        data-toggle="tooltip"
-        data-placement="left"
-        title="Delete Tweet"
-      >
-        X
-      </button>
+    <div class="col-5 d-flex align-items-center justify-content-end">{{ tweet?.username }}</div>
+    <div class="col-2 d-flex align-items-start justify-content-end pr-0">
+      <div class="dropdown">
+        <button
+          class="btn btn-outline-secondary btn-sm dropdown"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          ...
+        </button>
+        <div class="dropdown-menu dropdown-menu-right py-1" aria-labelledby="dropdownMenu2">
+          <button type="button" class="dropdown-item btn-sm px-2" (click)="onDeleteTweetBtnClick()">Delete</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card-body">

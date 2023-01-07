@@ -17,11 +17,15 @@
       border: none;
       border-bottom: 4px solid $sceptic-green;
     }
+
     div i.fas:hover {
       color: $yellow-green-green;
     }
   }
 
+  .dropdown-menu {
+    min-width: 7rem;
+  }
 
   //.divider {
   //  background-color: $hit-grey-grey;
