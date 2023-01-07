@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tweet } from '../dashboard.model';
 
 @Component({
@@ -8,6 +8,7 @@ import { Tweet } from '../dashboard.model';
 })
 export class TweetCardComponent implements OnInit {
   @Input() public tweet: Tweet;
+  @Output() public deleteTweet: EventEmitter<string> = new EventEmitter();
 
   public userAvatarWithPath: string;
 
@@ -19,5 +20,9 @@ export class TweetCardComponent implements OnInit {
       const avatarUrl = 'https://i.imgur.com/';
       this.userAvatarWithPath = avatarUrl + avatar + '.png';
     }
+  }
+
+  public onDeleteTweetBtnClick(): void {
+    this.deleteTweet.emit(this.tweet.id);
   }
 }
