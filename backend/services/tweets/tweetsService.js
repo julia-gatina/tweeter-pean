@@ -31,7 +31,10 @@ const deleteTweet = async (tweetId) => {
   const successfullyDeleted = await tweetsRepository.deleteTweetById(tweetId);
   if (successfullyDeleted) {
     console.log('Tweet successfully deleted.');
+  } else {
+    console.log('Tweet not found.');
   }
+  return successfullyDeleted;
 };
 
 /**
