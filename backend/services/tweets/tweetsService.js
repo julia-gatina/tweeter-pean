@@ -24,13 +24,13 @@ const createTweet = async (tweetDto) => {
   }
 };
 
+/**
+ * Deletes specific tweet by its ID
+ */
 const deleteTweet = async (tweetId) => {
   const successfullyDeleted = await tweetsRepository.deleteTweetById(tweetId);
   if (successfullyDeleted) {
-    console.log('Deleted tweet, msg from tweetsServices');
-    return successfullyDeleted;
-  } else {
-    return null;
+    console.log('Tweet successfully deleted.');
   }
 };
 
