@@ -66,6 +66,23 @@ module.exports = function () {
       });
   });
 
+  tweetsRoutes.delete('/tweet/delete/:id', function (req, res) {
+    const tweetId = req.params.id;
+    if (!tweetId) {
+      res.status(400).json({ error: 'invalid request: no tweet ID in DELETE request' });
+      return;
+    }
+
+    tweetsService
+      .deleteTweet(tweetId)
+      .then((success) => {
+        res.status(200).json(success);
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
+  });
+
   /**
    * @openapi
    * /api/tweet:

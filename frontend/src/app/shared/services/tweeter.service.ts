@@ -26,4 +26,9 @@ export class TweeterService {
 
     return this.http.post<Tweet>(url, body);
   }
+
+  deleteTweet(tweetId: string) {
+    const url = `${this.baseURL}/tweet/delete/${tweetId}`;
+    return this.http.delete(url);
+  }
 }
