@@ -8,7 +8,7 @@ import { Tweet } from '../dashboard.model';
 })
 export class TweetCardComponent implements OnInit {
   @Input() public tweet: Tweet;
-  @Output() deleteTweet: EventEmitter<any> = new EventEmitter();
+  @Output() public deleteTweet: EventEmitter<string> = new EventEmitter();
 
   public userAvatarWithPath: string;
 
@@ -22,7 +22,7 @@ export class TweetCardComponent implements OnInit {
     }
   }
 
-  onDeleteTweetBtnClick() {
+  public onDeleteTweetBtnClick(): void {
     this.deleteTweet.emit(this.tweet.id);
   }
 }
