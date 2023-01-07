@@ -30,14 +30,13 @@ const saveTweet = (dbTweet) => {
 
 const deleteTweetById = (tweetId) => {
   const query = `DELETE
-                 from tweet
+                 FROM tweet
                  WHERE id = $1`;
   const params = [tweetId];
   return dbPool
     .query(query, params)
     .then((success) => {
-      return true;
-      return true;
+      return success.rowCount; // if deleted: 1, if not found: 0
     })
     .catch((error) => {
       console.error('Failed to delete tweet.', error);
@@ -45,10 +44,16 @@ const deleteTweetById = (tweetId) => {
 };
 
 const getTweetById = (tweetId) => {
-  const query = `SELECT *
-                 FROM tweet
-                        JOIN user_ on user_id = user_.id
-                 WHERE tweet.id = $1 LIMIT 1;`;
+  const query = `SELECT t.id,
+                        u.name,
+                        u.username,
+                        u.avatar,
+                        t.message,
+                        t.created_at,
+                        t.type
+                 FROM tweet AS t
+                        INNER JOIN user_ AS u ON u.id = t.user_id
+                 WHERE t.id = $1 LIMIT 1`;
   const params = [tweetId];
   return dbPool
     .query(query, params)
@@ -62,8 +67,8 @@ const getTweetById = (tweetId) => {
 
 const getAllTweets = () => {
   const query = `SELECT t.id, u.name, u.username, u.avatar, t.message, t.created_at, t.type
-                 FROM tweet as t
-                        inner join user_ as u on u.id = t.user_id
+                 FROM tweet AS t
+                        INNER JOIN user_ AS u ON u.id = t.user_id
                  ORDER BY t.created_at DESC`;
   return dbPool
     .query(query, '')
