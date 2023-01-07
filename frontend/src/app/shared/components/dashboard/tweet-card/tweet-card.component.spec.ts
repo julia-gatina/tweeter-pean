@@ -18,6 +18,7 @@ describe('TweetCardComponent', () => {
     fixture = TestBed.createComponent(TweetCardComponent);
     component = fixture.componentInstance;
     component.tweet = {
+      id: ';kjh9768kajwhg;kqjhg',
       name: 'Test Name',
       username: '@TestUsername',
       avatar: '73hZDYK',
