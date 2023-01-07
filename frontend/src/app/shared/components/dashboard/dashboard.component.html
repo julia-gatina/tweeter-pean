@@ -8,7 +8,7 @@
         <bf-tweet-card
           *ngFor="let tweet of tweets"
           [tweet]="tweet"
-          (deleteTweet)="onDeleteTweet(tweet.id)"
+          (deleteTweet)="onDeleteTweet($event)"
         ></bf-tweet-card>
       </ng-container>
     </div>
