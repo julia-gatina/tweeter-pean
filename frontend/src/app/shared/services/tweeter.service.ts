@@ -27,8 +27,8 @@ export class TweeterService {
     return this.http.post<Tweet>(url, body);
   }
 
-  deleteTweet(tweetId: string) {
+  public deleteTweet(tweetId: string): Observable<void> {
     const url = `${this.baseURL}/tweet/delete/${tweetId}`;
-    return this.http.delete(url);
+    return this.http.delete<void>(url);
   }
 }
