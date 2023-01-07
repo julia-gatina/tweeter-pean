@@ -51,4 +51,23 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+  onDeleteTweet(tweetId) {
+    this.tweeterService.deleteTweet(tweetId).subscribe(
+      //success
+      (success) => {
+        console.log('Tweet deleted successfully, msg from dashboard component');
+        this.tweets.find(
+          (tweet, index) => {
+            if (tweet?.id === tweetId) {
+              this.tweets.splice(index, 1);
+            }
+          },
+          (error) => {
+            console.log('Error in delete tweet', JSON.stringify(error));
+          }
+        );
+      }
+    );
+  }
 }
