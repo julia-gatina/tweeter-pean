@@ -3,10 +3,6 @@
 const { v4: uuidv4 } = require('uuid');
 const tweetsRepository = require('./tweetsRepository');
 
-const getTestData = async () => {
-  return await tweetsRepository.getTestData();
-};
-
 /**
  * Creates new tweet
  */
@@ -83,6 +79,5 @@ function tweetDtoToDbTweet(tweetDto, user) {
 module.exports = {
   createTweet,
   deleteTweet,
-  getTestData,
   getAllTweets
 };

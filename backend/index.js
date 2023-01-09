@@ -29,19 +29,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-const db = require('./lib/in-memory-db');
-
 // Swagger
 swagger.initialize(app, envVar.SERVER_PORT);
 
-const DataHelpers = require('./lib/data-helpers.js')(db);
-
-require('./lib/date-adjust')();
-
-// The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
-// so it can define routes that use it to interact with the data layer.
-const tweetsRoutes = require('./routes/tweets')(DataHelpers);
-const personRoutes = require('./routes/person')(DataHelpers);
+// Routes
+const tweetsRoutes = require('./routes/tweets')();
+const personRoutes = require('./routes/person')();
 
 // Mount the backend routes at the "/api" path prefix:
 app.use('/api', tweetsRoutes);

@@ -2,18 +2,6 @@
 
 const dbPool = require('../../db/db-pool');
 
-const getTestData = () => {
-  const getTestDataQuery = 'SELECT * FROM test_table_liquibase;';
-  return dbPool
-    .query(getTestDataQuery, '')
-    .then((success) => {
-      return success.rows;
-    })
-    .catch((error) => {
-      console.error('Failed to get test data. ', error);
-    });
-};
-
 const saveTweet = (dbTweet) => {
   const query = `INSERT INTO tweet (id, type, message, created_at, user_id)
                  VALUES ($1, $2, $3, $4, $5);`;
@@ -97,7 +85,6 @@ module.exports = {
   getAllUsers,
   saveTweet,
   getTweetById,
-  getTestData,
   getAllTweets,
   deleteTweetById
 };
