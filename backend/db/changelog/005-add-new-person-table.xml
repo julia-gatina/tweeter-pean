@@ -1,0 +1,34 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet author="rgatin" id="add-new-person-table">
+
+    <createTable tableName="person">
+      <column name="id" type="VARCHAR(255)">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="name" type="VARCHAR(255)" />
+      <column name="age" type="SMALLINT" />
+    </createTable>
+
+    <insert tableName="person">
+      <column name="id" value="f9613152-50db-4b3c-b9b2-e261efb486f3" />
+      <column name="name" value="Renat" />
+      <column name="age" value="35" />
+    </insert>
+    <insert tableName="person">
+      <column name="id" value="6fdcb3fe-df00-41cd-bfa3-17d20a50c7d2" />
+      <column name="name" value="Amelia" />
+      <column name="age" value="5" />
+    </insert>
+    <insert tableName="person">
+      <column name="id" value="7e84c4e3-ebb8-4ff7-9fda-19215eefbd1d" />
+      <column name="name" value="Bishenka" />
+      <column name="age" value="12" />
+    </insert>
+
+  </changeSet>
+
+</databaseChangeLog>

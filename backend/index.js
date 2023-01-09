@@ -10,6 +10,8 @@ const swagger = require('./tools/swagger/swagger');
 /* Test DB connection works  */
 require('./db/db-pool');
 
+const sequelizeDB = require('./models');
+
 const myConfig = {
   ...nodeLiquibase.POSTGRESQL_DEFAULT_CONFIG,
   changeLogFile: './db/changelog.xml',
@@ -39,10 +41,14 @@ require('./lib/date-adjust')();
 // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
 // so it can define routes that use it to interact with the data layer.
 const tweetsRoutes = require('./routes/tweets')(DataHelpers);
+const personRoutes = require('./routes/person')(DataHelpers);
 
 // Mount the backend routes at the "/api" path prefix:
 app.use('/api', tweetsRoutes);
+app.use('/api', personRoutes);
 
-app.listen(envVar.SERVER_PORT, () => {
-  log.info('Tweeter backend listening on port ' + envVar.SERVER_PORT);
+sequelizeDB.sequelize.sync().then((req) => {
+  app.listen(envVar.SERVER_PORT, () => {
+    log.info('Tweeter backend listening on port ' + envVar.SERVER_PORT);
+  });
 });
