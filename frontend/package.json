@@ -1,6 +1,6 @@
 {
   "name": "tweeter-ui",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy/local.conf.js",

@@ -6,9 +6,15 @@ const express = require('express');
 const { log } = require('./tools/logger');
 const nodeLiquibase = require('node-liquibase');
 const swagger = require('./tools/swagger/swagger');
+const dbOrm = require('./models');
 
 /* Test DB connection works  */
 require('./db/db-pool');
+
+dbOrm.sequelize
+  .authenticate()
+  .then(() => console.log('Sequelize is successfully initialized and connected to DB'))
+  .catch((err) => console.log('Error initializing Sequelize', err));
 
 const myConfig = {
   ...nodeLiquibase.POSTGRESQL_DEFAULT_CONFIG,
@@ -27,21 +33,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-const db = require('./lib/in-memory-db');
-
 // Swagger
 swagger.initialize(app, envVar.SERVER_PORT);
 
-const DataHelpers = require('./lib/data-helpers.js')(db);
-
-require('./lib/date-adjust')();
-
-// The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
-// so it can define routes that use it to interact with the data layer.
-const tweetsRoutes = require('./routes/tweets')(DataHelpers);
+// Routes
+const tweetsRoutes = require('./routes/tweets')();
+const personRoutes = require('./routes/person')();
 
 // Mount the backend routes at the "/api" path prefix:
 app.use('/api', tweetsRoutes);
+app.use('/api', personRoutes);
 
 app.listen(envVar.SERVER_PORT, () => {
   log.info('Tweeter backend listening on port ' + envVar.SERVER_PORT);

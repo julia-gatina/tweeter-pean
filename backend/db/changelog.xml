@@ -10,6 +10,7 @@
   <include file="db/changelog/002-add-age-column-test-table.xml"/>
   <include file="db/changelog/003-add-user-and-tweet-tables.xml"/>
   <include file="db/changelog/004-modify-created-at-column.xml"/>
+  <include file="db/changelog/005-add-new-person-table.xml"/>
 
   <!--Load content standards and initial data-->
   <!--

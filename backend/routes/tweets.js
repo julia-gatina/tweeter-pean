@@ -20,21 +20,6 @@ module.exports = function () {
    */
   tweetsRoutes.get('/healthcheck', (req, res) => res.sendStatus(200));
 
-  tweetsRoutes.get('/test', function (req, res) {
-    return res.status(200).send('Hello world, from backend!');
-  });
-
-  tweetsRoutes.get('/test-db', function (req, res) {
-    tweetsService
-      .getTestData()
-      .then((testData) => {
-        res.status(200).json(testData);
-      })
-      .catch((error) => {
-        res.status(500).json({ error: error.message });
-      });
-  });
-
   /**
    * @openapi
    * /api/tweet/all:
