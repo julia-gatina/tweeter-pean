@@ -10,8 +10,6 @@ const swagger = require('./tools/swagger/swagger');
 /* Test DB connection works  */
 require('./db/db-pool');
 
-const sequelizeDB = require('./models');
-
 const myConfig = {
   ...nodeLiquibase.POSTGRESQL_DEFAULT_CONFIG,
   changeLogFile: './db/changelog.xml',
@@ -40,8 +38,6 @@ const personRoutes = require('./routes/person')();
 app.use('/api', tweetsRoutes);
 app.use('/api', personRoutes);
 
-sequelizeDB.sequelize.sync().then((req) => {
-  app.listen(envVar.SERVER_PORT, () => {
-    log.info('Tweeter backend listening on port ' + envVar.SERVER_PORT);
-  });
+app.listen(envVar.SERVER_PORT, () => {
+  log.info('Tweeter backend listening on port ' + envVar.SERVER_PORT);
 });
