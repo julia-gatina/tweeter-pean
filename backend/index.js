@@ -6,9 +6,15 @@ const express = require('express');
 const { log } = require('./tools/logger');
 const nodeLiquibase = require('node-liquibase');
 const swagger = require('./tools/swagger/swagger');
+const dbOrm = require('./models');
 
 /* Test DB connection works  */
 require('./db/db-pool');
+
+dbOrm.sequelize
+  .authenticate()
+  .then(() => console.log('Sequelize is successfully initialized and connected to DB'))
+  .catch((err) => console.log('Error initializing Sequelize', err));
 
 const myConfig = {
   ...nodeLiquibase.POSTGRESQL_DEFAULT_CONFIG,
