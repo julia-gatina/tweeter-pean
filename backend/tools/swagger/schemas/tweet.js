@@ -8,6 +8,8 @@ module.exports = {
        *    TweetResponseDto:
        *      type: object
        *      properties:
+       *        id:
+       *          type: string
        *        name:
        *          type: string
        *        username:
@@ -22,6 +24,7 @@ module.exports = {
        *          type: string
        *
        *      example:
+       *        id: 'f9cddd3a-0e9e-4c9f-94d1-d99592b7cdae'
        *        name: 'Jane Doe'
        *        username: '@JaneDoe'
        *        avatar: '73hZDYK'
@@ -44,7 +47,7 @@ module.exports = {
        *        type:
        *          type: TweetType
        *        message:
-       *            type: string
+       *          type: string
        *
        *      example:
        *        type: 'tweet'
