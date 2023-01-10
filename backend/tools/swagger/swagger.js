@@ -25,7 +25,7 @@ const options = {
       }
     ]
   },
-  apis: ['./routes/tweets.js', './routes/person.js', './tools/swagger/schemas/*.js']
+  apis: ['./routes/tweet.js', './routes/person.js', './tools/swagger/schemas/*.js']
 };
 
 const swaggerSpec = swaggerJsdoc(options);

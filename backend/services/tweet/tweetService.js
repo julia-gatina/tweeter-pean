@@ -1,7 +1,7 @@
 'use strict';
 
 const { v4: uuidv4 } = require('uuid');
-const tweetsRepository = require('./tweetsRepository');
+const tweetRepository = require('./tweetRepository');
 
 /**
  * Creates new tweet
@@ -9,10 +9,10 @@ const tweetsRepository = require('./tweetsRepository');
 const createTweet = async (tweetDto) => {
   const user = await getRandomUser();
   let dbTweet = tweetDtoToDbTweet(tweetDto, user);
-  const successfullySaved = await tweetsRepository.saveTweet(dbTweet);
+  const successfullySaved = await tweetRepository.saveTweet(dbTweet);
 
   if (successfullySaved) {
-    dbTweet = await tweetsRepository.getTweetById(dbTweet.id);
+    dbTweet = await tweetRepository.getTweetById(dbTweet.id);
     const savedTweetDto = dbTweetToTweetDto(dbTweet);
     return savedTweetDto;
   } else {
@@ -24,7 +24,7 @@ const createTweet = async (tweetDto) => {
  * Deletes specific tweet by its ID
  */
 const deleteTweet = async (tweetId) => {
-  const successfullyDeleted = await tweetsRepository.deleteTweetById(tweetId);
+  const successfullyDeleted = await tweetRepository.deleteTweetById(tweetId);
   if (successfullyDeleted) {
     console.log('Tweet successfully deleted.');
   } else {
@@ -37,7 +37,7 @@ const deleteTweet = async (tweetId) => {
  * Gets all users and then returns random one
  */
 async function getRandomUser() {
-  const users = await tweetsRepository.getAllUsers();
+  const users = await tweetRepository.getAllUsers();
   const user = users[Math.floor(Math.random() * users.length)];
   return user;
 }
@@ -46,7 +46,7 @@ async function getRandomUser() {
  * Get Tweets and converts each to TweetDto
  */
 const getAllTweets = async () => {
-  const allDbTweets = await tweetsRepository.getAllTweets();
+  const allDbTweets = await tweetRepository.getAllTweets();
   const allTweetDtos = allDbTweets.map((dbTweet) => dbTweetToTweetDto(dbTweet));
   return allTweetDtos;
 };
