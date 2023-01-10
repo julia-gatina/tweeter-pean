@@ -39,6 +39,17 @@ export class DashboardComponent implements OnInit {
     this.showTweetInput = !this.showTweetInput;
   }
 
+  public onDeleteTweet(tweetId: string): void {
+    this.tweeterService.deleteTweet(tweetId).subscribe(
+      (success) => {
+        this.tweets = this.tweets.filter((tweet) => tweet.id !== tweetId);
+      },
+      (error) => {
+        console.log('Error in delete tweet', JSON.stringify(error));
+      }
+    );
+  }
+
   private loadTweets(): void {
     this.tweeterService.getTweets().subscribe(
       // success

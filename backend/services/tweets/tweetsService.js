@@ -25,6 +25,19 @@ const createTweet = async (tweetDto) => {
 };
 
 /**
+ * Deletes specific tweet by its ID
+ */
+const deleteTweet = async (tweetId) => {
+  const successfullyDeleted = await tweetsRepository.deleteTweetById(tweetId);
+  if (successfullyDeleted) {
+    console.log('Tweet successfully deleted.');
+  } else {
+    console.log('Tweet not found.');
+  }
+  return successfullyDeleted;
+};
+
+/**
  * Gets all users and then returns random one
  */
 async function getRandomUser() {
@@ -45,6 +58,7 @@ const getAllTweets = async () => {
 function dbTweetToTweetDto(dbTweet) {
   const epochTimestamp = Date.parse(dbTweet.created_at);
   const tweetDto = {
+    id: dbTweet.id,
     name: dbTweet.name,
     username: dbTweet.username,
     avatar: dbTweet.avatar,
@@ -68,6 +82,7 @@ function tweetDtoToDbTweet(tweetDto, user) {
 
 module.exports = {
   createTweet,
+  deleteTweet,
   getTestData,
   getAllTweets
 };

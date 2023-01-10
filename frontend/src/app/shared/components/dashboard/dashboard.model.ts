@@ -1,6 +1,7 @@
 import { TweetType } from './dashboard.enum';
 
 export interface Tweet {
+  id: string;
   name: string;
   username: string;
   avatar: string;
