@@ -31,7 +31,7 @@ module.exports = {
        *        name:
        *          type: string
        *        age:
-       *            type: smallInt
+       *          type: smallInt
        *
        *      example:
        *        name: 'John Smith'

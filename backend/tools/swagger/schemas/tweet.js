@@ -44,7 +44,7 @@ module.exports = {
        *        type:
        *          type: TweetType
        *        message:
-       *            type: string
+       *          type: string
        *
        *      example:
        *        type: 'tweet'
