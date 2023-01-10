@@ -1,9 +1,9 @@
 'use strict';
 
-const tweetsService = require('../services/tweets/tweetsService');
+const tweetService = require('../services/tweet/tweetService');
 
 const express = require('express');
-const tweetsRoutes = express.Router();
+const tweetRoutes = express.Router();
 
 module.exports = function () {
   /**
@@ -18,7 +18,7 @@ module.exports = function () {
    *       200:
    *         description: App is up and running
    */
-  tweetsRoutes.get('/healthcheck', (req, res) => res.sendStatus(200));
+  tweetRoutes.get('/healthcheck', (req, res) => res.sendStatus(200));
 
   /**
    * @openapi
@@ -40,8 +40,8 @@ module.exports = function () {
    *       500:
    *        description: Internal server error
    */
-  tweetsRoutes.get('/tweet/all', function (req, res) {
-    tweetsService
+  tweetRoutes.get('/tweet/all', function (req, res) {
+    tweetService
       .getAllTweets()
       .then((tweets) => {
         res.status(200).json(tweets);
@@ -76,14 +76,14 @@ module.exports = function () {
    *       400:
    *        description: invalid request no tweet ID in DELETE request
    */
-  tweetsRoutes.delete('/tweet/:id', function (req, res) {
+  tweetRoutes.delete('/tweet/:id', function (req, res) {
     const tweetId = req.params.id;
     if (!tweetId) {
       res.status(400).json({ error: 'invalid request: no tweet ID in DELETE request' });
       return;
     }
 
-    tweetsService
+    tweetService
       .deleteTweet(tweetId)
       .then((successfullyDeleted) => {
         if (successfullyDeleted) {
@@ -124,14 +124,14 @@ module.exports = function () {
    *       400:
    *        description: Invalid request
    */
-  tweetsRoutes.post('/tweet', function (req, res) {
+  tweetRoutes.post('/tweet', function (req, res) {
     const tweetDto = req.body;
     if (!tweetDto) {
       res.status(400).json({ error: 'invalid request: no tweet data in POST body' });
       return;
     }
 
-    tweetsService
+    tweetService
       .createTweet(tweetDto)
       .then((savedTweet) => {
         res.status(200).json(savedTweet);
@@ -140,5 +140,5 @@ module.exports = function () {
         res.status(500).json({ error: error.message });
       });
   });
-  return tweetsRoutes;
+  return tweetRoutes;
 };
