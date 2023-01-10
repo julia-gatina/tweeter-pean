@@ -1,6 +1,6 @@
 {
   "name": "tweeter-api",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "A twitter backend server",
   "main": "index.js",
   "scripts": {
