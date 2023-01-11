@@ -37,7 +37,7 @@ app.use(express.static('public'));
 swagger.initialize(app, envVar.SERVER_PORT);
 
 // Routes
-const tweetsRoutes = require('./routes/tweets')();
+const tweetsRoutes = require('./routes/tweet')();
 const personRoutes = require('./routes/person')();
 
 // Mount the backend routes at the "/api" path prefix:
