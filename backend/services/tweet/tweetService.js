@@ -2,6 +2,7 @@
 
 const { v4: uuidv4 } = require('uuid');
 const tweetRepository = require('./tweetRepository');
+const getRandomUser = require('./../user/userService');
 
 /**
  * Creates new tweet
@@ -32,15 +33,6 @@ const deleteTweet = async (tweetId) => {
   }
   return successfullyDeleted;
 };
-
-/**
- * Gets all users and then returns random one
- */
-async function getRandomUser() {
-  const users = await tweetRepository.getAllUsers();
-  const user = users[Math.floor(Math.random() * users.length)];
-  return user;
-}
 
 /**
  * Get Tweets and converts each to TweetDto
