@@ -1,6 +1,7 @@
 'use strict';
 
-const dbPool = require('../../db/db-pool');
+const { Tweet } = require('../../models');
+const { User } = require('../../models');
 
 const saveTweet = (dbTweet) => {
   const query = `INSERT INTO tweet (id, type, message, created_at, user_id)
@@ -54,18 +55,12 @@ const getTweetById = (tweetId) => {
 };
 
 const getAllTweets = () => {
-  const query = `SELECT t.id, u.name, u.username, u.avatar, t.message, t.created_at, t.type
-                 FROM tweet AS t
-                        INNER JOIN user_ AS u ON u.id = t.user_id
-                 ORDER BY t.created_at DESC`;
-  return dbPool
-    .query(query, '')
-    .then((success) => {
-      return success.rows;
-    })
-    .catch((error) => {
-      console.error('Failed to fetch tweets data.', error);
-    });
+  return Tweet.findAll({
+    include: {
+      model: User,
+      required: true
+    }
+  }).catch(errorHandler());
 };
 
 const getAllUsers = () => {
@@ -80,6 +75,13 @@ const getAllUsers = () => {
       console.error('Failed to fetch users data.', error);
     });
 };
+
+function errorHandler() {
+  return (error) => {
+    console.error(error);
+    throw error;
+  };
+}
 
 module.exports = {
   getAllUsers,
