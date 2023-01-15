@@ -24,5 +24,11 @@ module.exports = (sequelize) => {
       timestamps: false
     }
   );
+
+  User.associate = (models) => {
+    User.hasMany(models['Tweet'], {
+      foreignKey: 'user_id'
+    });
+  };
   return User;
 };

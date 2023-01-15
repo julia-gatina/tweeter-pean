@@ -55,12 +55,7 @@ const getTweetById = (tweetId) => {
 };
 
 const getAllTweets = () => {
-  return Tweet.findAll({
-    include: {
-      model: User,
-      required: true
-    }
-  }).catch(errorHandler());
+  return Tweet.findAll({ include: { model: User, as: 'user' } }).catch(errorHandler());
 };
 
 const getAllUsers = () => {

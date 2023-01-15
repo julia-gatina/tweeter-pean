@@ -34,5 +34,14 @@ module.exports = (sequelize) => {
       timestamps: false
     }
   );
+
+  Tweet.associate = (models) => {
+    Tweet.belongsTo(models['User'], {
+      allowNull: false,
+      foreignKey: 'user_id',
+      as: 'user'
+    });
+  };
+
   return Tweet;
 };
