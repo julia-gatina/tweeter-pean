@@ -15,7 +15,7 @@ export class TweetCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const avatar = this.tweet?.avatar;
+    const avatar = this.tweet?.user?.avatar;
     if (avatar) {
       const avatarUrl = 'https://i.imgur.com/';
       this.userAvatarWithPath = avatarUrl + avatar + '.png';

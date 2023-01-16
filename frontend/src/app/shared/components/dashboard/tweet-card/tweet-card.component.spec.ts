@@ -17,14 +17,18 @@ describe('TweetCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TweetCardComponent);
     component = fixture.componentInstance;
-    component.tweet = {
-      id: 'cabc7797-80bc-4c54-b15f-910fa8e40973',
+    const user = {
+      id: '4a96224c-8392-4cfe-b38f-a8384204cd41',
       name: 'Test Name',
       username: '@TestUsername',
       avatar: '73hZDYK',
+    };
+    component.tweet = {
+      id: 'cabc7797-80bc-4c54-b15f-910fa8e40973',
+      user: user,
       message: 'test text',
-      created_at: 1670959872000,
       type: TweetType.Tweet,
+      created_at: 1670959872000,
     } as Tweet;
     fixture.detectChanges();
   });
@@ -35,6 +39,6 @@ describe('TweetCardComponent', () => {
 
   it('should generate complete avatar URL', () => {
     const avatarUrl = 'https://i.imgur.com/';
-    expect(component.userAvatarWithPath).toEqual(avatarUrl + component.tweet.avatar + '.png');
+    expect(component.userAvatarWithPath).toEqual(avatarUrl + component.tweet.user.avatar + '.png');
   });
 });
