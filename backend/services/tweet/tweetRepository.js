@@ -4,55 +4,25 @@ const { Tweet } = require('../../models');
 const { User } = require('../../models');
 const { errorHandler } = require('../../utils/common-utils');
 
+/**
+ * Saves the created tweet to database
+ */
 const saveTweet = (dbTweet) => {
-  const query = `INSERT INTO tweet (id, type, message, created_at, user_id)
-                 VALUES ($1, $2, $3, $4, $5);`;
-  const params = [dbTweet.id, dbTweet.type, dbTweet.message, dbTweet.created_at, dbTweet.user_id];
-  return dbPool
-    .query(query, params)
-    .then((success) => {
-      return success.rowCount > 0;
-    })
-    .catch((error) => {
-      console.error('Failed to save tweet.', error);
-    });
+  return Tweet.create(dbTweet).catch(errorHandler);
 };
 
+/**
+ * Deletes a tweet by its id
+ */
 const deleteTweetById = (tweetId) => {
-  const query = `DELETE
-                 FROM tweet
-                 WHERE id = $1`;
-  const params = [tweetId];
-  return dbPool
-    .query(query, params)
-    .then((success) => {
-      return success.rowCount; // if deleted: 1, if not found: 0
-    })
-    .catch((error) => {
-      console.error('Failed to delete tweet.', error);
-    });
+  return Tweet.destroy({ where: { id: tweetId } }).catch(errorHandler);
 };
 
+/**
+ * Find a tweet by its id
+ */
 const getTweetById = (tweetId) => {
-  const query = `SELECT t.id,
-                        u.name,
-                        u.username,
-                        u.avatar,
-                        t.message,
-                        t.created_at,
-                        t.type
-                 FROM tweet AS t
-                        INNER JOIN user_ AS u ON u.id = t.user_id
-                 WHERE t.id = $1 LIMIT 1`;
-  const params = [tweetId];
-  return dbPool
-    .query(query, params)
-    .then((success) => {
-      return success.rows[0];
-    })
-    .catch((error) => {
-      console.error('Failed to fetch tweet by id.', error);
-    });
+  return Tweet.findOne({ where: { id: tweetId } }).catch(errorHandler);
 };
 
 /**
