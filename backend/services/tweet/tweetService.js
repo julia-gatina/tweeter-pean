@@ -14,7 +14,7 @@ const createTweet = async (tweetDto) => {
 
   if (successfullySaved) {
     dbTweet = await tweetRepository.getTweetById(dbTweet.id);
-    const savedTweetDto = savedDbTweetToTweetDto(dbTweet, user);
+    const savedTweetDto = dbTweetToTweetDto(dbTweet);
     return savedTweetDto;
   } else {
     return null;
@@ -50,24 +50,6 @@ function dbTweetToTweetDto(dbTweet) {
     message: dbTweet.message,
     type: dbTweet.type,
     user: dbTweet.user,
-    created_at: epochTimestamp
-  };
-  return tweetDto;
-}
-
-/**
- * Converts newly saved db tweet to tweetDto
- * @param dbTweet
- * @param user
- * @returns {{created_at: number, id, message, type, user}}
- */
-function savedDbTweetToTweetDto(dbTweet, user) {
-  const epochTimestamp = Date.parse(dbTweet.created_at);
-  const tweetDto = {
-    id: dbTweet.id,
-    message: dbTweet.message,
-    type: dbTweet.type,
-    user: user,
     created_at: epochTimestamp
   };
   return tweetDto;

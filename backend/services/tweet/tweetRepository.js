@@ -22,7 +22,7 @@ const deleteTweetById = (tweetId) => {
  * Find a tweet by its id
  */
 const getTweetById = (tweetId) => {
-  return Tweet.findOne({ where: { id: tweetId } }).catch(errorHandler);
+  return Tweet.findOne({ where: { id: tweetId }, include: { model: User, as: 'user' } }).catch(errorHandler);
 };
 
 /**
