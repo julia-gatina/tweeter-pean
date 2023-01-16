@@ -29,7 +29,10 @@ const getTweetById = (tweetId) => {
  * Get Tweets with associated User
  */
 const getAllTweets = () => {
-  return Tweet.findAll({ include: { model: User, as: 'user' } }).catch(errorHandler);
+  return Tweet.findAll({
+    include: { model: User, as: 'user' },
+    order: [['created_at', 'DESC']]
+  }).catch(errorHandler);
 };
 
 module.exports = {
