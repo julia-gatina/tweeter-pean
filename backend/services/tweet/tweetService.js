@@ -2,13 +2,13 @@
 
 const { v4: uuidv4 } = require('uuid');
 const tweetRepository = require('./tweetRepository');
-const getRandomUser = require('./../user/userService');
+const userService = require('./../user/userService');
 
 /**
  * Creates new tweet
  */
 const createTweet = async (tweetDto) => {
-  const user = await getRandomUser();
+  const user = await userService.getRandomUser();
   let dbTweet = tweetDtoToDbTweet(tweetDto, user);
   const successfullySaved = await tweetRepository.saveTweet(dbTweet);
 
@@ -47,12 +47,10 @@ function dbTweetToTweetDto(dbTweet) {
   const epochTimestamp = Date.parse(dbTweet.created_at);
   const tweetDto = {
     id: dbTweet.id,
-    name: dbTweet.name,
-    username: dbTweet.username,
-    avatar: dbTweet.avatar,
     message: dbTweet.message,
-    created_at: epochTimestamp,
-    type: dbTweet.type
+    type: dbTweet.type,
+    user: dbTweet.user,
+    created_at: epochTimestamp
   };
   return tweetDto;
 }

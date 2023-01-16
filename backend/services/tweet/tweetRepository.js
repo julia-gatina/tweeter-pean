@@ -2,6 +2,7 @@
 
 const { Tweet } = require('../../models');
 const { User } = require('../../models');
+const { errorHandler } = require('../../utils/common-utils');
 
 const saveTweet = (dbTweet) => {
   const query = `INSERT INTO tweet (id, type, message, created_at, user_id)
@@ -54,32 +55,14 @@ const getTweetById = (tweetId) => {
     });
 };
 
+/**
+ * Get Tweets with associated User
+ */
 const getAllTweets = () => {
-  return Tweet.findAll({ include: { model: User, as: 'user' } }).catch(errorHandler());
+  return Tweet.findAll({ include: { model: User, as: 'user' } }).catch(errorHandler);
 };
-
-const getAllUsers = () => {
-  const query = `SELECT *
-                 FROM user_`;
-  return dbPool
-    .query(query, '')
-    .then((success) => {
-      return success.rows;
-    })
-    .catch((error) => {
-      console.error('Failed to fetch users data.', error);
-    });
-};
-
-function errorHandler() {
-  return (error) => {
-    console.error(error);
-    throw error;
-  };
-}
 
 module.exports = {
-  getAllUsers,
   saveTweet,
   getTweetById,
   getAllTweets,
