@@ -1,24 +1,15 @@
 'use strict';
 
 const { Person } = require('../../models');
+const { errorHandler } = require('../../utils/common-utils');
 
 const findAll = () => {
-  return Person.findAll().catch(errorHandler());
+  return Person.findAll().catch(errorHandler);
 };
 
 const create = (person) => {
-  return Person.create(person).catch(errorHandler());
+  return Person.create(person).catch(errorHandler);
 };
-
-/**
- * Prints error and return it further.
- */
-function errorHandler() {
-  return (error) => {
-    console.error(error);
-    throw error;
-  };
-}
 
 module.exports = {
   findAll,
