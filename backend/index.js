@@ -8,9 +8,6 @@ const nodeLiquibase = require('node-liquibase');
 const swagger = require('./tools/swagger/swagger');
 const dbOrm = require('./models');
 
-/* Test DB connection works  */
-require('./db/db-pool');
-
 dbOrm.sequelize
   .authenticate()
   .then(() => console.log('Sequelize is successfully initialized and connected to DB'))
@@ -37,11 +34,11 @@ app.use(express.static('public'));
 swagger.initialize(app, envVar.SERVER_PORT);
 
 // Routes
-const tweetsRoutes = require('./routes/tweet')();
+const tweetRoutes = require('./routes/tweet')();
 const personRoutes = require('./routes/person')();
 
 // Mount the backend routes at the "/api" path prefix:
-app.use('/api', tweetsRoutes);
+app.use('/api', tweetRoutes);
 app.use('/api', personRoutes);
 
 app.listen(envVar.SERVER_PORT, () => {
