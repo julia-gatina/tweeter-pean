@@ -2,19 +2,22 @@
 
 :host {
   .new-tweet {
-    font-family: "Source Sans", sans-serif;
+    font-family: "Avenir", sans-serif;
     font-size: 20px;
     border: none;
     border-bottom: 5px solid $sceptic-green;
     outline: none;
     background-color: $desert-storm-grey;
   }
+
   textarea:focus {
     outline: none;
-    box-shadow: none!important;
+    box-shadow: none !important;
   }
+
   button {
-    font-family: "Bungee";
+    font-family: "Avenir", Sans-Serif;
+    font-weight: bold;
     font-size: 20px;
     color: $masala-brown;
     outline: none;
@@ -22,25 +25,26 @@
     height: 40px;
     box-shadow: 1px 1px 3px $hit-grey-grey;
     background-image: linear-gradient(
-      $conifer-green,
-      $tea-green-green,
-      $conifer-green
+        $mantis-green,
+        $tea-green-green,
+        $mantis-green
     );
     border-color: white;
-    filter: sepia(40%);
-    transition: filter 0.3s ease-in-out;
+
     &:hover {
-      filter:none;
-      transform: scale(1.03);
+      box-shadow: 2px 2px 5px $como-green;
+      transform: scale(1.01);
     }
   }
 
   .counter {
-    font-family: "Bungee";
+    font-family: "Avenir";
+    font-weight: bolder;
     font-size: 20px;
     color: $masala-brown;
   }
+
   .text-red {
-    color:red;
+    color: red;
   }
 }
