@@ -2,20 +2,20 @@
 
 :host {
   .card {
+    font-family: Avenir;
     background-color: $desert-storm-grey;
-    border-width: 5px 5px 5px 5px;
+    border-width: 2px 2px 2px 2px;
     border-color: $sceptic-green;
 
-
     &:hover {
-      box-shadow: 2px 2px 8px $yellow-green-green;
-      transform: scale(101%);
+      box-shadow: 1px 1px 5px $como-green;
+      transform: scale(1.002);
     }
 
     .card-body div {
       font-size: 20px;
       border: none;
-      border-bottom: 4px solid $sceptic-green;
+      border-bottom: 2px solid $hit-grey-grey;
     }
 
     div i.fas:hover {
@@ -24,6 +24,7 @@
   }
 
   .dropdown-menu {
+    font-family: Avenir;
     min-width: 7rem;
   }
 }
