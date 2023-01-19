@@ -11,11 +11,13 @@ import { TweetType } from './dashboard.enum';
 export class DashboardComponent implements OnInit {
   public showTweetInput: boolean = false;
   public tweets: Tweet[];
+  public userLoggedIn: boolean;
 
   constructor(private tweeterService: TweeterService) {}
 
   ngOnInit() {
     this.loadTweets();
+    this.userLoggedIn = true;
   }
 
   public onSubmitTweet(tweetText: string): void {

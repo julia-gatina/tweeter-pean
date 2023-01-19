@@ -2,20 +2,21 @@
 
 :host {
   .navbar {
-    background-color: $como-green;
-    height: 80px;
+    background-color: $prussian-blue;
+    height: 70px;
     box-shadow: 4px 4px 10px $sceptic-green;
     z-index: 100;
 
-    #logo {
-      //font-family: 'Bungee', 'Sans-Serif', cursive;
-      font-family: 'Artis', 'Sans-Serif', cursive;
-      color: white;
-      font-size: 33px;
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    a.nav-link {
+      color: $white-white;
+      text-decoration: none;
 
       &:hover {
         color: $tea-green-green;
-        transform: scale(1.05);
       }
     }
 
@@ -47,3 +48,4 @@
     }
   }
 }
+
