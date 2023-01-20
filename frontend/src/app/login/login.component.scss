@@ -5,11 +5,24 @@
   .container {
     font-family: Avenir;
     color: $masala-brown;
+
+    div.col-sm-12 {
+      box-shadow: 5px 8px 6px -6px $prussian-blue;
+    }
+
+    .form-control:focus {
+      border-color: $como-green;
+      box-shadow: 1px 1px 3px $sceptic-green;
+    }
+    
+    footer a {
+      font-size: small;
+      color: $hit-grey-grey;
+    }
   }
 
-  .form-control:focus {
-    border-color: $como-green;
-    box-shadow: 1px 1px 3px $sceptic-green;
+  .modal-dialog {
+    box-shadow: 5px 8px 6px -6px $prussian-blue;
   }
 
   .btn {
@@ -26,13 +39,12 @@
         $mantis-green
     );
     border-color: white;
-  }
 
-  footer a {
-    font-size: small;
-    color: $hit-grey-grey;
+    &:hover {
+      box-shadow: 2px 2px 5px $como-green;
+      transform: scale(1.01);
+    }
   }
-
 }
 
 
