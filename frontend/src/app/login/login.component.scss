@@ -1,0 +1,38 @@
+@import "src/styles/colors";
+
+:host {
+
+  .container {
+    font-family: Avenir;
+    color: $masala-brown;
+  }
+
+  .form-control:focus {
+    border-color: $como-green;
+    box-shadow: 1px 1px 3px $sceptic-green;
+  }
+
+  .btn {
+    font-family: "Avenir";
+    font-weight: bold;
+    font-size: 20px;
+    color: $masala-brown;
+    outline: none;
+    height: 40px;
+    box-shadow: 1px 1px 3px $hit-grey-grey;
+    background-image: linear-gradient(
+        $mantis-green,
+        $tea-green-green,
+        $mantis-green
+    );
+    border-color: white;
+  }
+
+  footer a {
+    font-size: small;
+    color: $hit-grey-grey;
+  }
+
+}
+
+
