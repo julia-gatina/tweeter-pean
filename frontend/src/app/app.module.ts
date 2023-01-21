@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './shared/components/dashboard/dashboard.module';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, CarouselComponent],
   imports: [BrowserModule, AppRoutingModule, DashboardModule],
   providers: [],
   bootstrap: [AppComponent],
