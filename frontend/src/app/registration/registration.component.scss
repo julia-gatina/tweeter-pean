@@ -1,0 +1,64 @@
+@import "src/styles/colors";
+
+:host {
+
+  // Mixins
+  @mixin transition($property: all, $duration: 300ms, $animate: linear, $delay:0s) {
+    transition: $property $duration $animate $delay;
+  }
+
+  // Placeholder Mixins
+  @mixin placeholder {
+    &.placeholder {
+      @content;
+    }
+    &:-moz-placeholder {
+      @content;
+    }
+    &::-moz-placeholder {
+      @content;
+    }
+    &::-webkit-input-placeholder {
+      @content;
+    }
+  }
+
+  .btn {
+    font-family: "Avenir";
+    font-weight: bold;
+    font-size: 20px;
+    color: $masala-brown;
+    outline: none;
+    height: 40px;
+    box-shadow: 1px 1px 3px $hit-grey-grey;
+    background-image: linear-gradient(
+        $mantis-green,
+        $tea-green-green,
+        $mantis-green
+    );
+    border-color: white;
+
+    &:hover {
+      box-shadow: 2px 2px 5px $como-green;
+      transform: scale(1.01);
+    }
+  }
+
+  .code_group {
+    margin-bottom: 60px;
+
+    .form-control {
+      border: 0;
+      border-bottom: 1px solid #a1a7ac;
+      border-radius: 0;
+      display: inline-block;
+      width: 30px;
+      font-size: 30px;
+      color: $mantis-green;
+      padding: 0;
+      margin-right: 7px;
+      text-align: center;
+      line-height: 1;
+    }
+  }
+}

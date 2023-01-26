@@ -1,20 +1,18 @@
 <bf-navigation></bf-navigation>
-<div class="container-fluid">
-  <div class="row my-5 mx-5">
-    <div class="col-12 col-md-6 mb-3">
-      <bf-carousel></bf-carousel>
-      <h2 class="text-center mt-5">Welcome to <b>Tweeter!</b></h2>
-      <p>
-        Lorem ipsum dolor sit amet. Et nulla dignissimos est dolorem nisi rem nulla officia eum quia numquam qui tempora
-        eveniet non Quis obcaecati non perspiciatis recusandae. Aut iure expedita et dicta officia 33 beatae ducimus sit
-        accusantium corrupti ut rerum perspiciatis est doloremque rerum est eaque reiciendis! Aut aliquid laudantium eum
-        ipsa tenetur et voluptas dolorum ut impedit tempore qui quas modi.
-      </p>
-    </div>
-    <div class="col-12 col-md-6 bg-light rounded py-4 px-5">
-      <h3 class="text-center mb-4">Create an account to join Tweeter</h3>
+<div class="ng-container">
+  <div class="row my-5 mx-3 d-flex justify-content-center">
+    <div class="col-12 col-md-7 bg-light rounded py-4 px-4">
+      <h4>Join <b>Tweeter</b></h4>
+      <p>The best way to share your thoughts with the world.</p>
       <form method="post" id="signUpFrom">
+        <!-- progressbar -->
+        <ul id="progressbar">
+          <li class="active">Create Your Account</li>
+          <li>Email Confirmation</li>
+          <li>Success</li>
+        </ul>
         <div class="form-group">
+          <h5 class="mb-4">Create an account to join Tweeter</h5>
           <label class="font-weight-bold">Name <span class="text-danger">*</span></label>
           <div class="input-group-prepend">
             <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
@@ -74,19 +72,52 @@
             />
           </div>
         </div>
-
         <div class="form-group">
-          <input type="submit" name="signUpSubmit" value="Sign Up for Tweeter" class="btn btn-block" />
+          <label class="font-weight-bold">Confirm Password <span class="text-danger">*</span></label>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></div>
+            <input
+              type="password"
+              name="signupcpassword"
+              id="signupcpassword"
+              class="form-control"
+              pattern="^\S{6,}$"
+              onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+              placeholder="***********"
+              required
+            />
+          </div>
         </div>
-        <div class="footer">Already have an account? <a href="login">Sign In.</a></div>
+        <div class="form-group">
+          <label
+            ><input type="checkbox" name="signUpCondition" id="signUpCondition" required /> I agree with the
+            <a href="javascript:;">Terms &amp; Conditions</a> for Registration.</label
+          >
+        </div>
+        <div class="form-group">
+          <input type="submit" name="signUpSubmit" value="Create an account" class="btn btn-next" />
+        </div>
+
+        <!--Email Confirmation-->
+        <fieldset>
+          <h3>Confirm Your Email</h3>
+          <h6>A confirmation code is sent to your email. <br />Please enter it below.</h6>
+          <div class="input-group-prepend my-5">
+            <div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div>
+            <input
+              type="code"
+              name="emailCode"
+              id="emailCode"
+              class="form-control"
+              placeholder="0000"
+              [maxLength]="4"
+              required
+            />
+          </div>
+          <button type="button" class="btn action-button previous_button">Back</button>
+          <button type="button" class="btn next action-button">Continue</button>
+        </fieldset>
       </form>
     </div>
-  </div>
-
-  <div class="row py-5 my-5">
-    <h4 class="col text-center">Features</h4>
-  </div>
-  <div class="row bg-secondary py-5 my-5">
-    <h4 class="col text-center">Contact Us</h4>
   </div>
 </div>
