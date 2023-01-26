@@ -1,0 +1,123 @@
+<bf-navigation></bf-navigation>
+<div class="ng-container">
+  <div class="row my-5 mx-3 d-flex justify-content-center">
+    <div class="col-12 col-md-7 bg-light rounded py-4 px-4">
+      <h4>Join <b>Tweeter</b></h4>
+      <p>The best way to share your thoughts with the world.</p>
+      <form method="post" id="signUpFrom">
+        <!-- progressbar -->
+        <ul id="progressbar">
+          <li class="active">Create Your Account</li>
+          <li>Email Confirmation</li>
+          <li>Success</li>
+        </ul>
+        <div class="form-group">
+          <h5 class="mb-4">Create an account to join Tweeter</h5>
+          <label class="font-weight-bold">Name <span class="text-danger">*</span></label>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <input
+              type="text"
+              name="signUpName"
+              id="signUpName"
+              class="form-control"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold">Username <span class="text-danger">*</span></label>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <input
+              type="text"
+              name="signUpUsername"
+              id="signUpUsername"
+              class="form-control"
+              placeholder="Choose your user name"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold">Email <span class="text-danger">*</span></label>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            </div>
+            <input
+              type="email"
+              name="signUpEmail"
+              id="signUpEmail"
+              class="form-control"
+              placeholder="Enter valid email"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold">Password <span class="text-danger">*</span></label>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></div>
+            <input
+              type="password"
+              name="signUpPassword"
+              id="signUpPassword"
+              class="form-control"
+              placeholder="***********"
+              pattern="^\S{6,}$"
+              onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold">Confirm Password <span class="text-danger">*</span></label>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></div>
+            <input
+              type="password"
+              name="signupcpassword"
+              id="signupcpassword"
+              class="form-control"
+              pattern="^\S{6,}$"
+              onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+              placeholder="***********"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label
+            ><input type="checkbox" name="signUpCondition" id="signUpCondition" required /> I agree with the
+            <a href="javascript:;">Terms &amp; Conditions</a> for Registration.</label
+          >
+        </div>
+        <div class="form-group">
+          <input type="submit" name="signUpSubmit" value="Create an account" class="btn btn-next" />
+        </div>
+
+        <!--Email Confirmation-->
+        <fieldset>
+          <h3>Confirm Your Email</h3>
+          <h6>A confirmation code is sent to your email. <br />Please enter it below.</h6>
+          <div class="input-group-prepend my-5">
+            <div class="input-group-text"><i class="fa fa-lock" aria-hidden="true"></i></div>
+            <input
+              type="code"
+              name="emailCode"
+              id="emailCode"
+              class="form-control"
+              placeholder="0000"
+              [maxLength]="4"
+              required
+            />
+          </div>
+          <button type="button" class="btn action-button previous_button">Back</button>
+          <button type="button" class="btn next action-button">Continue</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

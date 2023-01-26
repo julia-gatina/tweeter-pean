@@ -1,0 +1,15 @@
+@import "src/styles/colors";
+
+:host {
+
+  .carousel-inner {
+    box-shadow: $hit-grey-grey 0px 1px 0px, $hit-grey-grey 0px 8px 20px, $hit-grey-grey 0px 16px 38px;
+  }
+  
+  h4 {
+    color: $masala-brown;
+    background-color: $white-white;
+    border-radius: 1%;
+    opacity: 60%;
+  }
+}

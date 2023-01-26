@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [DashboardComponent, NavigationComponent, ProfileComponent, TweetCardComponent, TweetInputComponent],
   imports: [CommonModule, FormsModule, HttpClientModule],
-  exports: [DashboardComponent],
+  exports: [DashboardComponent, NavigationComponent],
   providers: [TweeterService],
 })
 export class DashboardModule {}
