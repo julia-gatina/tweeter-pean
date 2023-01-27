@@ -8,10 +8,11 @@ import { TweetInputComponent } from './tweet-input/tweet-input.component';
 import { FormsModule } from '@angular/forms';
 import { TweeterService } from '../../services/tweeter.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
   declarations: [DashboardComponent, NavigationComponent, ProfileComponent, TweetCardComponent, TweetInputComponent],
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, DashboardRoutingModule, FormsModule, HttpClientModule],
   exports: [DashboardComponent],
   providers: [TweeterService],
 })
