@@ -1,14 +1,40 @@
-<h1>Login</h1>
-{{ errorMsg }}
-<form action="/api/auth/login" method="POST">
-  <div>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required />
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required />
-  </div>
-  <button type="submit">Login</button>
-</form>
-<a href="/register">Register</a>
+<div class="container">
+  <form [formGroup]="loginForm" (submit)="loginForm.valid && login()">
+    <div class="row">
+      <h2>Login</h2>
+    </div>
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" [formControlName]="'email'" id="email" class="form-control" autocomplete="off" />
+          <span *ngIf="email?.touched && email?.invalid" class="text-danger">
+            <small *ngIf="email?.errors?.['required']">Required field</small>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" [formControlName]="'password'" id="password" class="form-control" autocomplete="off" />
+          <span *ngIf="password?.touched && password?.invalid" class="text-danger">
+            <small *ngIf="password?.errors?.['required']">Required field</small>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-lg-3 col-lg-2">
+        <br />
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="loginForm.markAllAsTouched()">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<a href="/create-account">Register</a>
