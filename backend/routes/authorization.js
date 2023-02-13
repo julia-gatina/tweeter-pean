@@ -1,7 +1,5 @@
 'use strict';
 
-const personService = require('../services/person/personService');
-
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { v4: uuidv4 } = require('uuid');
@@ -27,8 +25,9 @@ module.exports = function () {
     }
     newUser.id = uuidv4();
     users.push(newUser);
+    console.log('updated users: ', users);
 
-    res.status(200).send('successfully registered');
+    res.status(200).send({});
   });
 
   authorizationRoutes.get('/secure/resource', (req, res) => {

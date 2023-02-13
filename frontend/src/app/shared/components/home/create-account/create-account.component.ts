@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateUser } from './create-account.model';
+import { AuthService } from '../../../services/auth/auth.service';
+import { Router } from '@angular/router';
+import { noop } from 'rxjs';
 
 @Component({
   selector: 'bf-create-account',
@@ -33,7 +36,7 @@ export class CreateAccountComponent implements OnInit {
     return this.registerForm?.get('password2');
   }
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -53,6 +56,15 @@ export class CreateAccountComponent implements OnInit {
     }
     delete createUserData.password2;
 
-    console.log('createUserData: ', createUserData);
+    this.authService.register(createUserData).subscribe(
+      (success) => {
+        // TODO: redirect to validate Email page
+        this.router.navigate(['login']).then(noop);
+      },
+      (error) => {
+        console.error(error);
+        alert('Error creating new account.');
+      }
+    );
   }
 }
