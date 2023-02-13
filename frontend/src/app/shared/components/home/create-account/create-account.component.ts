@@ -4,6 +4,7 @@ import { CreateUser } from './create-account.model';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { noop } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'bf-create-account',
@@ -36,7 +37,7 @@ export class CreateAccountComponent implements OnInit {
     return this.registerForm?.get('password2');
   }
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private toastrService: ToastrService) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -59,11 +60,12 @@ export class CreateAccountComponent implements OnInit {
     this.authService.register(createUserData).subscribe(
       (success) => {
         // TODO: redirect to validate Email page
+        this.toastrService.success('Account successfully created. Validate your email.');
         this.router.navigate(['login']).then(noop);
       },
       (error) => {
         console.error(error);
-        alert('Error creating new account.');
+        this.toastrService.error('Error creating new account.');
       }
     );
   }

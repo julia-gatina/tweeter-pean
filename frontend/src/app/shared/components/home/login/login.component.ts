@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'bf-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm?.get('password');
   }
 
-  constructor() {}
+  constructor(private toastrService: ToastrService) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -29,5 +30,6 @@ export class LoginComponent implements OnInit {
   public login(): void {
     const loginData = this.loginForm.getRawValue();
     console.log('loginData: ', loginData);
+    this.toastrService.success('Test Toast');
   }
 }

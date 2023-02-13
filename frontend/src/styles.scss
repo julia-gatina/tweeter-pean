@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/styles/colors";
 
+// regular style toast
+@import 'ngx-toastr/toastr';
+
 body {
   background-color: $desert-storm-grey;
 }
