@@ -36,10 +36,12 @@ swagger.initialize(app, envVar.SERVER_PORT);
 // Routes
 const tweetRoutes = require('./routes/tweet')();
 const personRoutes = require('./routes/person')();
+const authorizationRoutes = require('./routes/authorization')();
 
 // Mount the backend routes at the "/api" path prefix:
 app.use('/api', tweetRoutes);
 app.use('/api', personRoutes);
+app.use('/api', authorizationRoutes);
 
 app.listen(envVar.SERVER_PORT, () => {
   log.info('Tweeter backend listening on port ' + envVar.SERVER_PORT);
