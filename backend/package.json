@@ -15,6 +15,7 @@
   "author": "Binary Force, Julia Gatina",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "chance": "^1.0.2",
     "express": "^4.13.4",
     "fs": "0.0.1-security",

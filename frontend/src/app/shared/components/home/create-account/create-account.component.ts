@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CreateUser } from './create-account.model';
 
 @Component({
   selector: 'bf-create-account',
@@ -45,11 +46,13 @@ export class CreateAccountComponent implements OnInit {
   }
 
   public createAccount(): void {
-    const createUserData = this.registerForm.getRawValue();
+    const createUserData = this.registerForm.getRawValue() as CreateUser;
     this.passwordDontMatch = createUserData.password != createUserData.password2;
     if (this.passwordDontMatch) {
       return;
     }
+    delete createUserData.password2;
+
     console.log('createUserData: ', createUserData);
   }
 }
