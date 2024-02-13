@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginButtonModule } from '../login-button/login-button.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ChangePasswordComponent,
     CreateAccountComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    ReactiveFormsModule,
+    LoginButtonModule,
+  ],
 })
 export class HomeModule {}
