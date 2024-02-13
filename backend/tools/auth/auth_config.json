@@ -4,7 +4,7 @@
   "authorizationParams": {
     "audience": "https://dev-3dmw7mfdtmcpdyzg.us.auth0.com/api/v2/"
   },
-  "apiUri": "http://localhost:3001",
+  "apiUri": "http://localhost:8080",
   "appUri": "http://localhost:4200",
   "errorPath": "/error"
 }
