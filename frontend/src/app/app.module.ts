@@ -8,6 +8,9 @@ import { HomeModule } from './shared/components/home/home.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Import Auth0 SDK
+import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,6 +20,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    AuthModule.forRoot({
+      domain: 'dev-3dmw7mfdtmcpdyzg.us.auth0.com',
+      clientId: '5uVZgb9pIWU1nRR0iENwjLau2zD6ABGJ',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
