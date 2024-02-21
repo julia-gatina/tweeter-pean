@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'bf-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'tweeter-ui';
+  public title = 'tweeter-ui';
+  public isAuth0Loading$ = this.authService.isLoading$;
+
+  constructor(private authService: AuthService) {}
 }

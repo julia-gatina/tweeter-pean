@@ -25,5 +25,6 @@ import { LoginButtonModule } from '../login-button/login-button.module';
     ReactiveFormsModule,
     LoginButtonModule,
   ],
+  exports: [NavigationOpenComponent],
 })
 export class HomeModule {}

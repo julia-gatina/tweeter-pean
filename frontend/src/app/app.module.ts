@@ -10,9 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Import Auth0 SDK
 import { AuthModule } from '@auth0/auth0-angular';
+import { PageLoaderComponent } from './shared/components/page-loader/page-loader.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageLoaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

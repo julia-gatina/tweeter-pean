@@ -9,10 +9,23 @@ import { FormsModule } from '@angular/forms';
 import { TweeterService } from '../../services/tweeter.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { HomeModule } from '../home/home.module';
 
 @NgModule({
-  declarations: [DashboardComponent, NavigationComponent, ProfileComponent, TweetCardComponent, TweetInputComponent],
-  imports: [CommonModule, DashboardRoutingModule, FormsModule, HttpClientModule],
+  declarations: [
+    DashboardComponent,
+    NavigationComponent,
+    ProfileComponent,
+    TweetCardComponent,
+    TweetInputComponent,
+  ],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    HomeModule,
+  ],
   exports: [DashboardComponent],
   providers: [TweeterService],
 })
