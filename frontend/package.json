@@ -3,10 +3,11 @@
   "version": "1.0.5",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy/local.conf.js",
-    "build": "ng build",
-    "build:dev": "ng build --configuration development",
-    "watch": "ng build --watch --configuration development",
+    "env": "node set-env.ts",
+    "start": "npm run env && ng serve --proxy-config proxy/local.conf.js",
+    "build": "npm run env && ng build",
+    "build:dev": "npm run env && ng build --configuration development",
+    "watch": "npm run env && ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --watch=false --codeCoverage=true --browsers=ChromeHeadlessNoSandbox",
     "format:fix": "pretty-quick --staged",
@@ -53,7 +54,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3",
-    "typescript": "~4.6.2"
+    "typescript": "~4.6.2",
+    "dotenv": "^16.0.1"
   },
   "husky": {
     "hooks": {

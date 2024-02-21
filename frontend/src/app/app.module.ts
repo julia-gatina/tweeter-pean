@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { environment as env } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './shared/components/dashboard/dashboard.module';
 import { HomeModule } from './shared/components/home/home.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageLoaderComponent } from './shared/components/page-loader/page-loader.component';
 
 // Import Auth0 SDK
+// used following Guide from Auth0: https://developer.auth0.com/resources/guides/spa/angular/basic-authentication
 import { AuthModule } from '@auth0/auth0-angular';
-import { PageLoaderComponent } from './shared/components/page-loader/page-loader.component';
 
 @NgModule({
   declarations: [AppComponent, PageLoaderComponent],
@@ -22,11 +23,7 @@ import { PageLoaderComponent } from './shared/components/page-loader/page-loader
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AuthModule.forRoot({
-      domain: 'dev-3dmw7mfdtmcpdyzg.us.auth0.com',
-      clientId: '5uVZgb9pIWU1nRR0iENwjLau2zD6ABGJ',
-      authorizationParams: {
-        redirect_uri: window.location.origin,
-      },
+      ...env.auth0,
     }),
   ],
   providers: [],
