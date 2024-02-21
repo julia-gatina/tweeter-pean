@@ -7,7 +7,6 @@ import { NavigationOpenComponent } from './navigation-open/navigation-open.compo
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { CreateAccountComponent } from './create-account/create-account.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginButtonModule } from '../login-button/login-button.module';
 
@@ -19,7 +18,6 @@ import { LoginButtonModule } from '../login-button/login-button.module';
     WelcomeComponent,
     ForgotPasswordComponent,
     ChangePasswordComponent,
-    CreateAccountComponent,
   ],
   imports: [
     CommonModule,
