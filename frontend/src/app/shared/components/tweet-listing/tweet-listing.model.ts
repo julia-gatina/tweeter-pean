@@ -1,4 +1,4 @@
-import { TweetType } from './dashboard.enum';
+import { TweetType } from './tweet-listing.enum';
 
 export interface Tweet {
   id: string;

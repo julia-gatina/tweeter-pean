@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TweetCardComponent } from './tweet-card.component';
-import { Tweet } from '../dashboard.model';
-import { TweetType } from '../dashboard.enum';
+import { Tweet } from '../tweet-listing.model';
+import { TweetType } from '../tweet-listing.enum';
 
 describe('TweetCardComponent', () => {
   let component: TweetCardComponent;
@@ -39,6 +39,8 @@ describe('TweetCardComponent', () => {
 
   it('should generate complete avatar URL', () => {
     const avatarUrl = 'https://i.imgur.com/';
-    expect(component.userAvatarWithPath).toEqual(avatarUrl + component.tweet.user.avatar + '.png');
+    expect(component.userAvatarWithPath).toEqual(
+      avatarUrl + component.tweet.user.avatar + '.png'
+    );
   });
 });

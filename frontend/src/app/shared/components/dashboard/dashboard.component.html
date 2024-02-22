@@ -1,19 +1,2 @@
-<bf-tweet-header (newTweetClicked)="toggleTweetInputForm()"></bf-tweet-header>
-<div class="container-fluid">
-  <div class="row my-5">
-    <bf-profile class="col-12 col-md-6"></bf-profile>
-    <div class="col-12 col-md-6">
-      <bf-tweet-input
-        *ngIf="showTweetInput"
-        (submitTweet)="onSubmitTweet($event)"
-      ></bf-tweet-input>
-      <ng-container *ngIf="tweets">
-        <bf-tweet-card
-          *ngFor="let tweet of tweets"
-          [tweet]="tweet"
-          (deleteTweet)="onDeleteTweet($event)"
-        ></bf-tweet-card>
-      </ng-container>
-    </div>
-  </div>
-</div>
+<p>Dashboard (secured page: for logged in Only users)</p>
+<a class="nav-link" href="/dashboard/tweets">See Tweets</a>

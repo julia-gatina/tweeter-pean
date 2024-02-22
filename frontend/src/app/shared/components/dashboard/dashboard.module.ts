@@ -1,32 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
-import { TweetCardComponent } from './tweet-card/tweet-card.component';
-import { TweetInputComponent } from './tweet-input/tweet-input.component';
-import { FormsModule } from '@angular/forms';
-import { TweeterService } from '../../services/tweeter.service';
-import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { ProfiledModule } from './profile/profile.module';
 import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
-import { TweetHeaderComponent } from '../tweet-header/tweet-header.component';
+import { TweetListingModule } from '../tweet-listing/tweet-listing.module';
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    TweetHeaderComponent,
-    TweetCardComponent,
-    TweetInputComponent,
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ProfiledModule,
     NavigationBarModule,
+    TweetListingModule,
   ],
   exports: [DashboardComponent],
-  providers: [TweeterService],
+  providers: [],
 })
 export class DashboardModule {}

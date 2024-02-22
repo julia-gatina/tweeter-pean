@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Tweet } from '../dashboard.model';
+import { Tweet } from '../tweet-listing.model';
 
 @Component({
   selector: 'bf-tweet-card',
