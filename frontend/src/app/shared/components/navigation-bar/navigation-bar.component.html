@@ -37,19 +37,19 @@
           >Protected</a
         >
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/dashboard">Dashboard</a>
-          <a class="dropdown-item" href="/dashboard/tweets">Tweets</a>
+          <a class="dropdown-item" href="/secured">Dashboard</a>
+          <a class="dropdown-item" href="/secured/tweets">Tweets</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin">Admin</a>
+        <a class="nav-link" href="/secured/admin">Admin</a>
       </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
       <ng-container *ngIf="isAuthenticated$ | async; else unAuthenticated">
         <ul class="navbar-nav mr-2">
           <li class="nav-item">
-            <a class="nav-link" href="/profile"
+            <a class="nav-link" href="/secured/profile"
               ><i class="fas fa-user"></i> Profile</a
             >
           </li>

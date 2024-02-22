@@ -14,7 +14,7 @@ const routes: Routes = [
           import('../public/public.module').then((m) => m.PublicModule),
       },
       {
-        path: 'dashboard',
+        path: 'secured',
         loadChildren: () =>
           import('../protected/protected.module').then(
             (m) => m.ProtectedModule
