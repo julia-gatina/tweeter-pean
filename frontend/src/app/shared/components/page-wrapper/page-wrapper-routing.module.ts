@@ -11,7 +11,7 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('../public/welcome.module').then((m) => m.WelcomeModule),
+          import('../public/public.module').then((m) => m.PublicModule),
       },
       {
         path: 'dashboard',
