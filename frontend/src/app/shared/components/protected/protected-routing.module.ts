@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TweetListingComponent } from './tweet-listing/tweet-listing.component';
 import { AdminComponent } from './admin/admin.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,14 @@ const routes: Routes = [
     component: AdminComponent,
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
+    loadChildren: () =>
+      import('./user-profile/user-profile.module').then(
+        (m) => m.UserProfileModule
+      ),
   },
 ];
 
