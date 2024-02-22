@@ -6,9 +6,9 @@ import { TweetInputComponent } from './tweet-input/tweet-input.component';
 import { FormsModule } from '@angular/forms';
 import { TweeterService } from '../../services/tweeter.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ProfiledModule } from './profile/profile.module';
 import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
-import { TweetHeaderComponent } from '../tweet-header/tweet-header.component';
+import { TweetHeaderComponent } from './tweet-header/tweet-header.component';
+import { TweetProfileModule } from './tweet-profile/tweet-profile.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { TweetHeaderComponent } from '../tweet-header/tweet-header.component';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    ProfiledModule,
+    TweetProfileModule,
     NavigationBarModule,
   ],
   exports: [TweetListingComponent],

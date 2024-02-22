@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ProfileComponent } from './profile.component';
+import { TweetProfileComponent } from './tweet-profile.component';
 
 @NgModule({
-  declarations: [ProfileComponent],
+  declarations: [TweetProfileComponent],
   imports: [CommonModule, FormsModule],
-  exports: [ProfileComponent],
+  exports: [TweetProfileComponent],
   providers: [],
 })
-export class ProfiledModule {}
+export class TweetProfileModule {}
