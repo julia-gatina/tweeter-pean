@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { environment as env } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardModule } from './shared/components/dashboard/dashboard.module';
-import { HomeModule } from './shared/components/home/home.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageLoaderComponent } from './shared/components/page-loader/page-loader.component';
@@ -18,8 +16,6 @@ import { AuthModule } from '@auth0/auth0-angular';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule,
-    HomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AuthModule.forRoot({

@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'bf-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+  selector: 'bf-tweet-header',
+  templateUrl: './tweet-header.component.html',
+  styleUrls: ['./tweet-header.component.scss'],
 })
-export class NavigationComponent {
+export class TweetHeaderComponent {
   @Output() newTweetClicked = new EventEmitter();
   constructor() {}
 

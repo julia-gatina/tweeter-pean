@@ -1,21 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
-import { NavigationComponent } from '../navigation/navigation.component';
 import { TweetCardComponent } from './tweet-card/tweet-card.component';
 import { TweetInputComponent } from './tweet-input/tweet-input.component';
 import { FormsModule } from '@angular/forms';
 import { TweeterService } from '../../services/tweeter.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { HomeModule } from '../home/home.module';
 import { ProfiledModule } from './profile/profile.module';
-import { NavigationBarModule } from '../home/navigation-bar/navigation-bar.module';
+import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
+import { TweetHeaderComponent } from '../tweet-header/tweet-header.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavigationComponent,
+    TweetHeaderComponent,
     TweetCardComponent,
     TweetInputComponent,
   ],
@@ -24,7 +23,6 @@ import { NavigationBarModule } from '../home/navigation-bar/navigation-bar.modul
     DashboardRoutingModule,
     FormsModule,
     HttpClientModule,
-    HomeModule,
     ProfiledModule,
     NavigationBarModule,
   ],
