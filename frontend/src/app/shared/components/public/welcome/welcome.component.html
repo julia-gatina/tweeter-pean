@@ -4,4 +4,15 @@
       <p>Welcome page (not requires users login)</p>
     </div>
   </div>
+  <div class="row mt-2">
+    <div class="col">
+      <p>Get call "/api/person/all" (Should Fail with 401)</p>
+      {{ persons }}
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <button (click)="fetchPersons()">Fetch Persons</button>
+    </div>
+  </div>
 </div>

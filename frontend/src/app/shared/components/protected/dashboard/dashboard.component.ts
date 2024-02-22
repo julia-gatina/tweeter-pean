@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../services/dashboard/dashboard.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'bf-dashboard',
@@ -11,18 +12,16 @@ export class DashboardComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService) {}
 
-  ngOnInit() {
-    this.fetchPersons();
-  }
+  ngOnInit() {}
 
   public fetchPersons(): void {
     console.log('fetchPersons()');
     this.dashboardService.getPersons$().subscribe(
       (response) => {
-        this.persons = response;
+        this.persons = response.map((user) => JSON.stringify(user, null, 2));
       },
       (error) => {
-        console.log('Error details on fetchPersons():', error);
+        console.error('Error details on fetchPersons():', error);
       }
     );
   }
