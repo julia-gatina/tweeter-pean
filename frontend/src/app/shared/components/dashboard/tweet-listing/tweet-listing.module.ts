@@ -4,11 +4,11 @@ import { TweetListingComponent } from './tweet-listing.component';
 import { TweetCardComponent } from './tweet-card/tweet-card.component';
 import { TweetInputComponent } from './tweet-input/tweet-input.component';
 import { FormsModule } from '@angular/forms';
-import { TweeterService } from '../../services/tweeter.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NavigationBarModule } from '../navigation-bar/navigation-bar.module';
 import { TweetHeaderComponent } from './tweet-header/tweet-header.component';
 import { TweetProfileModule } from './tweet-profile/tweet-profile.module';
+import { NavigationBarModule } from '../../navigation-bar/navigation-bar.module';
+import { TweeterService } from '../../../services/tweeter.service';
 
 @NgModule({
   declarations: [

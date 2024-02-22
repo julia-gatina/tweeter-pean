@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TweeterService } from '../../services/tweeter.service';
 import { Tweet } from './tweet-listing.model';
 import { TweetType } from './tweet-listing.enum';
+import { TweeterService } from '../../../services/tweeter.service';
 
 @Component({
   selector: 'bf-tweet-listing',
