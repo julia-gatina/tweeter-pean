@@ -7,6 +7,7 @@ const { log } = require('./tools/logger');
 const nodeLiquibase = require('node-liquibase');
 const swagger = require('./tools/swagger/swagger');
 const dbOrm = require('./models');
+const nocache = require('nocache');
 
 /* auth imports - start */
 const helmet = require('helmet');
@@ -34,6 +35,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(nocache());
 
 /* auth setup - start */
 app.use(helmet());

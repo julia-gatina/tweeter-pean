@@ -3,7 +3,7 @@ const envVar = require('../../env-vars');
 
 const ensureAuthenticated = auth({
   audience: envVar.AUTH0_AUDIENCE,
-  issuerBaseURL: envVar.AUTH0_DOMAIN
+  issuerBaseURL: `https://${envVar.AUTH0_DOMAIN}`
 });
 
 module.exports = {
