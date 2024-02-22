@@ -5,4 +5,15 @@
       <a href="/dashboard/tweets">See Tweets</a>
     </div>
   </div>
+  <div class="row mt-2">
+    <div class="col">
+      <p>Get call "/api/person/all"</p>
+      {{ persons }}
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <button (click)="fetchPersons()">Fetch Persons</button>
+    </div>
+  </div>
 </div>
