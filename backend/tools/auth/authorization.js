@@ -1,9 +1,9 @@
 const { auth } = require('express-oauth2-jwt-bearer');
-const authConfig = require('./auth_config.json');
+const envVar = require('../../env-vars');
 
 const ensureAuthenticated = auth({
-  audience: authConfig.authorizationParams.audience,
-  issuerBaseURL: `https://${authConfig.domain}`
+  audience: envVar.AUTH0_AUDIENCE,
+  issuerBaseURL: envVar.AUTH0_DOMAIN
 });
 
 module.exports = {

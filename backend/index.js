@@ -11,7 +11,6 @@ const dbOrm = require('./models');
 /* auth imports - start */
 const helmet = require('helmet');
 const cors = require('cors');
-const authConfig = require('./tools/auth/auth_config.json');
 /* auth imports - end */
 
 dbOrm.sequelize
@@ -40,7 +39,7 @@ app.use(express.static('public'));
 app.use(helmet());
 app.use(
   cors({
-    origin: authConfig.appUri
+    origin: envVar.CLIENT_ORIGIN_URL
   })
 );
 /* auth setup - end */
