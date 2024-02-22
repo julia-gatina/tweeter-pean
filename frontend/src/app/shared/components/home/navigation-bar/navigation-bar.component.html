@@ -23,13 +23,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="/public">Public</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/protected">Protected</a>
+        <a class="nav-link" href="/profile">Dashboard</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/admin">Admin</a>
@@ -37,6 +34,13 @@
     </ul>
     <div class="form-inline my-2 my-lg-0">
       <ng-container *ngIf="isAuthenticated$ | async; else unAuthenticated">
+        <ul class="navbar-nav mr-2">
+          <li class="nav-item">
+            <a class="nav-link" href="/profile"
+              ><i class="fas fa-user"></i> Profile</a
+            >
+          </li>
+        </ul>
         <button class="btn btn-danger my-2 my-sm-0" (click)="handleLogout()">
           Log Out
         </button>
