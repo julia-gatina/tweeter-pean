@@ -10,6 +10,7 @@ import { PageLoaderComponent } from './shared/components/page-loader/page-loader
 // Import Auth0 SDK
 // used following Guide from Auth0: https://developer.auth0.com/resources/guides/spa/angular/basic-authentication
 import { AuthModule } from '@auth0/auth0-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, PageLoaderComponent],
@@ -17,6 +18,7 @@ import { AuthModule } from '@auth0/auth0-angular';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot(),
     AuthModule.forRoot({
       ...env.auth0,

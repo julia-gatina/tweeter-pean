@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tweet } from '../components/dashboard/tweet-listing/tweet-listing.model';
+import { Tweet } from '../components/protected/tweet-listing/tweet-listing.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +10,6 @@ export class TweeterService {
   private baseURL = '/api';
 
   constructor(private http: HttpClient) {}
-
-  public printLine(stringToPrint: string): void {
-    console.log('Printed from TweeterService: ' + stringToPrint);
-  }
 
   public getTweets(): Observable<Tweet[]> {
     const url = `${this.baseURL}/tweet/all`;
