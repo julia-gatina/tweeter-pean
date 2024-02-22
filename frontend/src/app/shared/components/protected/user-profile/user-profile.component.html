@@ -2,20 +2,28 @@
   <div class="row mt-3">
     <div class="col">
       <p>User Profile page (secured page: for logged in Only users)</p>
-      <p>User details:</p>
-      <div class="card" style="width: 18rem">
-        <img
-          class="card-img-top"
-          src=".../100px180/?text=Image cap"
-          alt="Card image cap"
-        />
-        <div class="card-body">
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+
+      <ng-container *ngIf="user$ | async as user">
+        <div class="card">
+          <img class="card-img-top ml-4 mt-4" [src]="user.picture" alt="User picture" />
+          <div class="card-body">
+            <h2 class="profile__title">{{ user.name }}</h2>
+            <span class="profile__description">{{ user.email }}</span>
+            <ng-container *ngIf="code$ | async as code">
+              <div class="profile__details">
+                <div class="code-snippet">
+                  <span class="code-snippet__title">{{ title }}</span>
+                  <div class="code-snippet__container">
+                    <div class="code-snippet__wrapper">
+                      <pre class="code-snippet__body">{{ code }}</pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
         </div>
-      </div>
+      </ng-container>
     </div>
   </div>
 </div>
