@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HomeModule } from '../home/home.module';
 import { ProfiledModule } from './profile/profile.module';
+import { NavigationBarModule } from '../home/navigation-bar/navigation-bar.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProfiledModule } from './profile/profile.module';
     HttpClientModule,
     HomeModule,
     ProfiledModule,
+    NavigationBarModule,
   ],
   exports: [DashboardComponent],
   providers: [TweeterService],

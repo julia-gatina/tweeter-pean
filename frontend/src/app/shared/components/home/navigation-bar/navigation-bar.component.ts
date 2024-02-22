@@ -4,11 +4,11 @@ import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'bf-navigation-open',
-  templateUrl: './navigation-open.component.html',
-  styleUrls: ['./navigation-open.component.scss'],
+  selector: 'bf-navigation-bar',
+  templateUrl: './navigation-bar.component.html',
+  styleUrls: ['./navigation-bar.component.scss'],
 })
-export class NavigationOpenComponent {
+export class NavigationBarComponent {
   public isAuthenticated$: Observable<boolean>;
 
   constructor(

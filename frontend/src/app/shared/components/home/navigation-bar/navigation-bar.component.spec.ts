@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavigationOpenComponent } from './navigation-open.component';
+import { NavigationBarComponent } from './navigation-bar.component';
 
-describe('NavigationOpenComponent', () => {
-  let component: NavigationOpenComponent;
-  let fixture: ComponentFixture<NavigationOpenComponent>;
+describe('NavigationBarComponent', () => {
+  let component: NavigationBarComponent;
+  let fixture: ComponentFixture<NavigationBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavigationOpenComponent],
+      declarations: [NavigationBarComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationOpenComponent);
+    fixture = TestBed.createComponent(NavigationBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
