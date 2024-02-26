@@ -23,7 +23,7 @@ import { PageLoaderComponent } from './shared/components/page-loader/page-loader
     AuthModule.forRoot({
       ...env.auth0,
       httpInterceptor: {
-        allowedList: ['/api/*'],
+        allowedList: ['/api/*'], // will set Authorization Bearer token
       },
     }),
   ],

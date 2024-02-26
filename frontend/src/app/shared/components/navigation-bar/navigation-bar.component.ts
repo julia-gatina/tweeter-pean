@@ -29,7 +29,7 @@ export class NavigationBarComponent {
   public handleSignUp(): void {
     this.authService.loginWithRedirect({
       appState: {
-        target: '/profile',
+        target: '/secured',
       },
       authorizationParams: {
         screen_hint: 'signup',
@@ -40,7 +40,7 @@ export class NavigationBarComponent {
   public handleLogin(): void {
     this.authService.loginWithRedirect({
       appState: {
-        target: '/profile',
+        target: '/secured',
       },
     });
   }
