@@ -9,6 +9,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./welcome/welcome.module').then((m) => m.WelcomeModule),
   },
+  {
+    path: 'error',
+    loadChildren: () =>
+      import('./error/error.module').then((m) => m.ErrorModule),
+  },
 ];
 
 @NgModule({
