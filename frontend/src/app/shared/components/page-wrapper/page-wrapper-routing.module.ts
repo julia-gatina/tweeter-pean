@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageWrapperComponent } from './page-wrapper.component';
 import { AuthGuard } from '@auth0/auth0-angular';
+import { AuthGuardEmailVerified } from '../../services/auth/auth-guard-email-verified.service';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
           import('../protected/protected.module').then(
             (m) => m.ProtectedModule
           ),
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, AuthGuardEmailVerified],
       },
     ],
   },
