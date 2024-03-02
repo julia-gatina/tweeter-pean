@@ -3,7 +3,7 @@
 const personService = require('../services/person/personService');
 
 const express = require('express');
-const { ensureAuthenticated } = require('../tools/auth/authorization');
+const { ensureAuthenticated, ensureUserEmailVerified } = require('../tools/auth/authorization');
 const personRoutes = express.Router();
 
 module.exports = function () {
@@ -27,7 +27,7 @@ module.exports = function () {
    *       500:
    *        description: Internal server error
    */
-  personRoutes.get('/person/all', ensureAuthenticated, function (req, res) {
+  personRoutes.get('/person/all', [ensureAuthenticated, ensureUserEmailVerified], async function (req, res) {
     personService
       .findAll()
       .then((personList) => {
