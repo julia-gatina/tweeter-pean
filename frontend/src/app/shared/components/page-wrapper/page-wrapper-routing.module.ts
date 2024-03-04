@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageWrapperComponent } from './page-wrapper.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { AuthGuardEmailVerified } from '../../services/auth/auth-guard-email-verified.service';
+import { AuthGuardHasPermission } from '../../services/auth/auth-guard-has-permission.service';
+import { AuthPermissions } from './page-wrapper-routing.interface';
 
 const routes: Routes = [
   {
@@ -20,7 +22,14 @@ const routes: Routes = [
           import('../protected/protected.module').then(
             (m) => m.ProtectedModule
           ),
-        canActivate: [AuthGuard, AuthGuardEmailVerified],
+        canActivate: [
+          AuthGuard,
+          AuthGuardEmailVerified,
+          AuthGuardHasPermission,
+        ],
+        data: {
+          permissions: ['read:test-admin-message'],
+        } as AuthPermissions,
       },
     ],
   },
