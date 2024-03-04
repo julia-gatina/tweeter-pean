@@ -9,20 +9,31 @@ import { map } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   public persons: any[];
+  public adminMessage: string;
 
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {}
 
   public fetchPersons(): void {
-    console.log('fetchPersons()');
-    this.dashboardService.getPersons$().subscribe(
-      (response) => {
+    this.dashboardService.getPersons$().subscribe({
+      next: (response) => {
         this.persons = response.map((user) => JSON.stringify(user, null, 2));
       },
-      (error) => {
+      error: (error) => {
         console.error('Error details on fetchPersons():', error);
-      }
-    );
+      },
+    });
+  }
+
+  public fetchAdminMessage(): void {
+    this.dashboardService.getAdminMessage$().subscribe({
+      next: (response) => {
+        this.adminMessage = JSON.stringify(response, null, 2);
+      },
+      error: (error) => {
+        console.error('Error on fetchAdminMessage():', error);
+      },
+    });
   }
 }

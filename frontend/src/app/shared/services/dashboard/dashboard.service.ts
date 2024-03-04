@@ -14,4 +14,9 @@ export class DashboardService {
     const url = `${this.baseURL}/person/all`;
     return this.http.get<any[]>(url);
   }
+
+  public getAdminMessage$(): Observable<{ secureMessage: string }> {
+    const url = `${this.baseURL}/person/admin`;
+    return this.http.get<{ secureMessage: string }>(url);
+  }
 }

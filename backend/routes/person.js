@@ -4,6 +4,7 @@ const personService = require('../services/person/personService');
 
 const express = require('express');
 const { ensureAuthenticated, ensureUserEmailVerified } = require('../tools/auth/authorization');
+const { claimIncludes } = require('express-oauth2-jwt-bearer');
 const personRoutes = express.Router();
 
 module.exports = function () {
@@ -27,7 +28,7 @@ module.exports = function () {
    *       500:
    *        description: Internal server error
    */
-  personRoutes.get('/person/all', [ensureAuthenticated, ensureUserEmailVerified], async function (req, res) {
+  personRoutes.get('/person/all', [ensureAuthenticated, ensureUserEmailVerified], async (req, res) => {
     personService
       .findAll()
       .then((personList) => {
@@ -37,6 +38,21 @@ module.exports = function () {
         res.status(500).json({ error: error.message });
       });
   });
+
+  /**
+   * Role: Admin
+   * Permission: read:test-admin-message
+   */
+  personRoutes.get(
+    '/person/admin',
+    [ensureAuthenticated, ensureUserEmailVerified],
+    claimIncludes('permissions', 'read:test-admin-message'),
+    async (req, res) => {
+      res.status(200).json({
+        secureMessage: 'This is for Admin Only secure message!'
+      });
+    }
+  );
 
   /**
    * @openapi
@@ -65,7 +81,7 @@ module.exports = function () {
    *       400:
    *        description: Invalid request
    */
-  personRoutes.post('/person', function (req, res) {
+  personRoutes.post('/person', (req, res) => {
     const person = req.body;
     personService
       .create(person)

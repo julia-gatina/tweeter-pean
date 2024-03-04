@@ -6,14 +6,21 @@
     </div>
   </div>
   <div class="row mt-2">
-    <div class="col">
+    <div class="col-12">
       <p>Get call "/api/person/all"</p>
-      {{ persons }}
+      Response: <code>{{ persons }}</code>
+    </div>
+    <div class="col-12">
+      <button (click)="fetchPersons()">Fetch Persons</button>
     </div>
   </div>
-  <div class="row mt-2">
+  <div class="row mt-4">
+    <div class="col-12">
+      <p>Get call "/api/person/admin" Only Admin secure message</p>
+      Response: <code>{{ adminMessage }}</code>
+    </div>
     <div class="col">
-      <button (click)="fetchPersons()">Fetch Persons</button>
+      <button (click)="fetchAdminMessage()">Fetch Persons</button>
     </div>
   </div>
 </div>
